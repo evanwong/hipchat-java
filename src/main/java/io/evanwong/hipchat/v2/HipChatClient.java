@@ -1,6 +1,5 @@
 package io.evanwong.hipchat.v2;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.evanwong.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
 import io.evanwong.hipchat.v2.rooms.SendRoomNotificationRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -53,12 +52,12 @@ public class HipChatClient {
         return prepareGetAllRoomsRequestBuilder(defaultAccessToken);
     }
 
-    public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String accessToken) {
-        return new SendRoomNotificationRequestBuilder(accessToken, httpClient, executorService);
+    public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken) {
+        return new SendRoomNotificationRequestBuilder(idOrName, message, accessToken, httpClient, executorService);
     }
 
-    public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder() {
-        return prepareSendRoomNotificationRequestBuilder(defaultAccessToken);
+    public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message) {
+        return prepareSendRoomNotificationRequestBuilder(idOrName, message, defaultAccessToken);
     }
 
     public void close() {
