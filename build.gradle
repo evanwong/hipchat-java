@@ -1,7 +1,15 @@
 apply plugin: 'java'
 
 repositories {
-        mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.3.5'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    runtime 'org.slf4j:slf4j-simple:1.7.7.jar'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
 task wrapper(type: Wrapper) {
