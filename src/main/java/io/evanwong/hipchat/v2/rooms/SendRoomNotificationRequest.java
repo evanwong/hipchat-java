@@ -11,12 +11,12 @@ import java.util.concurrent.ExecutorService;
 public class SendRoomNotificationRequest extends PostRequest<NoContent> {
 
     private String idOrName;
-    private String color;
+    private MessageColor color;
     private String message;
     private Boolean notify;
     private String messageFormat;
 
-    public SendRoomNotificationRequest(String idOrName, String color, String message, Boolean notify, String messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    public SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, String messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         this.accessToken = accessToken;
         this.idOrName = idOrName;
         this.color = color;
@@ -36,7 +36,7 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
     protected Map<String, Object> toQueryMap() {
         Map<String, Object> params = new HashMap<>();
         if (color != null) {
-            params.put("color", color);
+            params.put("color", color.name().toLowerCase());
         }
         params.put("message", message);
         if (notify != null) {

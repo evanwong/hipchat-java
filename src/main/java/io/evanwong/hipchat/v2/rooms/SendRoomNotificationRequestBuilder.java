@@ -8,27 +8,19 @@ import java.util.concurrent.ExecutorService;
 public class SendRoomNotificationRequestBuilder extends RequestBuilder {
 
     private String idOrName;
-    private String color;
+    private MessageColor color;
     private String message;
     private Boolean notify;
     private String messageFormat;
 
-    public SendRoomNotificationRequestBuilder(String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    public SendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
-    }
-
-    public SendRoomNotificationRequestBuilder setIdOrName(String idOrName) {
         this.idOrName = idOrName;
-        return this;
-    }
-
-    public SendRoomNotificationRequestBuilder setColor(String color) {
-        this.color = color;
-        return this;
-    }
-
-    public SendRoomNotificationRequestBuilder setMessage(String message) {
         this.message = message;
+    }
+
+    public SendRoomNotificationRequestBuilder setColor(MessageColor color) {
+        this.color = color;
         return this;
     }
 
