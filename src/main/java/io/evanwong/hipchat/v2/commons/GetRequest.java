@@ -8,15 +8,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public abstract class GetRequest<T> extends Request {
 
     private static final Logger log = LoggerFactory.getLogger(GetRequest.class);
+    protected List<String> expansions = new ArrayList<>();
 
     @Override
     protected HttpResponse request() throws IOException {
         Map<String, Object> params = toQueryMap();
+        if (!expansions.isEmpty()) {
+            params.put("expand", expansions.stream().collect(Collectors.joining(",")));
+        }
         log.info("GET - path: {}, params: {}", getPath(), params);
         String query = params != null && params.size() > 0 ? "?" : "";
         for (String key : params.keySet()) {
@@ -28,6 +35,9 @@ public abstract class GetRequest<T> extends Request {
         return httpClient.execute(httpGet, HttpClientContext.create());
     }
 
+    public boolean addExpansion(String title) {
+        return expansions.add(title);
+    }
 
 }
 
