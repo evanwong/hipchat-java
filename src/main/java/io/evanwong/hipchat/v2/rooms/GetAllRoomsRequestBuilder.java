@@ -1,11 +1,11 @@
 package io.evanwong.hipchat.v2.rooms;
 
-import io.evanwong.hipchat.v2.commons.RequestBuilder;
+import io.evanwong.hipchat.v2.commons.ExpandableRequestBuilder;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class GetAllRoomsRequestBuilder extends RequestBuilder {
+public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder {
 
     private Integer startIndex;
     private Integer maxResults;
@@ -34,6 +34,10 @@ public class GetAllRoomsRequestBuilder extends RequestBuilder {
         if (accessToken == null) {
             throw new IllegalArgumentException("accessToken is required");
         }
-        return new GetAllRoomsRequest(startIndex, maxResults, includeArchived, accessToken, httpClient, executorService);
+        GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(startIndex, maxResults, includeArchived, accessToken, httpClient, executorService);
+        if (!expansions.isEmpty()) {
+            expansions.forEach(title -> getAllRoomsRequest.addExpansion(title));
+        }
+        return getAllRoomsRequest;
     }
 }
