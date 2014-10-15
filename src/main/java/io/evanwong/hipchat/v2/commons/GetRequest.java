@@ -39,5 +39,8 @@ public abstract class GetRequest<T> extends Request {
         return expansions.add(title);
     }
 
+    public List<String> getExpansions() {
+        return new ArrayList<>(expansions);
+    }
 }
 

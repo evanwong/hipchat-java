@@ -11,7 +11,7 @@ public class SendRoomNotificationRequestBuilder extends RequestBuilder {
     private MessageColor color;
     private String message;
     private Boolean notify;
-    private String messageFormat;
+    private MessageFormat messageFormat;
 
     public SendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
@@ -29,7 +29,7 @@ public class SendRoomNotificationRequestBuilder extends RequestBuilder {
         return this;
     }
 
-    public SendRoomNotificationRequestBuilder setMessageFormat(String messageFormat) {
+    public SendRoomNotificationRequestBuilder setMessageFormat(MessageFormat messageFormat) {
         this.messageFormat = messageFormat;
         return this;
     }

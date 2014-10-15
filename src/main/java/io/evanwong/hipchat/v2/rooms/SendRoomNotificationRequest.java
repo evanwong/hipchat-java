@@ -14,9 +14,9 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
     private MessageColor color;
     private String message;
     private Boolean notify;
-    private String messageFormat;
+    private MessageFormat messageFormat;
 
-    public SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, String messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    public SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, MessageFormat messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         this.accessToken = accessToken;
         this.idOrName = idOrName;
         this.color = color;
@@ -25,6 +25,26 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
         this.messageFormat = messageFormat;
         this.httpClient = httpClient;
         this.executorService = executorService;
+    }
+
+    public String getIdOrName() {
+        return idOrName;
+    }
+
+    public MessageColor getColor() {
+        return color;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Boolean getNotify() {
+        return notify;
+    }
+
+    public MessageFormat getMessageFormat() {
+        return messageFormat;
     }
 
     @Override
@@ -43,7 +63,7 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
             params.put("notify", notify);
         }
         if (messageFormat != null) {
-            params.put("message_format", messageFormat);
+            params.put("message_format", messageFormat.getValue());
         }
         return params;
     }

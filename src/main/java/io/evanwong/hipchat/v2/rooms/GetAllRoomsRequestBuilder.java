@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder {
+public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder<GetAllRoomsRequestBuilder> {
 
     private Integer startIndex;
     private Integer maxResults;
@@ -30,6 +30,7 @@ public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder {
         return this;
     }
 
+    @Override
     public GetAllRoomsRequest build() {
         if (accessToken == null) {
             throw new IllegalArgumentException("accessToken is required");

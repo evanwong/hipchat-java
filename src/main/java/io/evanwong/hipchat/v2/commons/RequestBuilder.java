@@ -4,7 +4,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public abstract class RequestBuilder {
+public abstract class RequestBuilder<T> {
 
     protected final String accessToken;
     protected final HttpClient httpClient;
@@ -15,4 +15,6 @@ public abstract class RequestBuilder {
         this.httpClient = httpClient;
         this.executorService = executorService;
     }
+
+    public abstract T build();
 }

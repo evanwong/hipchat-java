@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-public abstract class ExpandableRequestBuilder extends RequestBuilder {
+public abstract class ExpandableRequestBuilder<T> extends RequestBuilder {
 
     protected final List<String> expansions;
 
@@ -15,8 +15,8 @@ public abstract class ExpandableRequestBuilder extends RequestBuilder {
         expansions = new ArrayList<>();
     }
 
-    ExpandableRequestBuilder addExpansion(String title) {
+    public T addExpansion(String title) {
         expansions.add(title);
-        return this;
+        return (T)this;
     }
 }
