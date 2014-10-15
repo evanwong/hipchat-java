@@ -1,6 +1,5 @@
 package io.evanwong.hipchat.v2.rooms;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.evanwong.hipchat.v2.commons.PagingLinks;
 
 import java.util.List;

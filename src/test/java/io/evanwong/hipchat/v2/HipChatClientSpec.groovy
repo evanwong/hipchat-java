@@ -1,11 +1,8 @@
 package io.evanwong.hipchat.v2
 
-import io.evanwong.hipchat.v2.commons.NoContent
 import io.evanwong.hipchat.v2.rooms.MessageColor
 import io.evanwong.hipchat.v2.rooms.MessageFormat
-import io.evanwong.hipchat.v2.rooms.Room
 import spock.lang.Specification
-
 
 class HipChatClientSpec extends Specification {
 
@@ -54,7 +51,7 @@ class HipChatClientSpec extends Specification {
         builder.messageFormat = messageFormat
 
         when:
-        def req = builder.build()        
+        def req = builder.build()
 
         then:
         req.idOrName == room
