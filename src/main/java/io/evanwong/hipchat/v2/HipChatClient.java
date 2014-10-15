@@ -19,6 +19,11 @@ public class HipChatClient {
     private CloseableHttpClient httpClient;
     private ExecutorService executorService;
     private String defaultAccessToken;
+    //TODO move this out
+    private int maxConnections = 20;
+    //TODO move this out
+    private int maxConnectionsPerRoute = 4;
+
 
     public HipChatClient() {
         init();
@@ -29,19 +34,20 @@ public class HipChatClient {
         init();
     }
 
-    public void setDefaultAccessToken(String defaultAccessToken) {
-        this.defaultAccessToken = defaultAccessToken;
-    }
-
     private void init() {
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        cm.setMaxTotal(20);
-        log.debug("Max pool size:100");
-        cm.setDefaultMaxPerRoute(4);
-        log.debug("Max per route:20");
+        cm.setMaxTotal(maxConnections);
+        log.debug("Max pool size: {}", maxConnections);
+        cm.setDefaultMaxPerRoute(maxConnectionsPerRoute);
+        log.debug("Max per route: {}", maxConnectionsPerRoute);
 
         httpClient = HttpClients.custom().setConnectionManager(cm).build();
-        executorService = Executors.newFixedThreadPool(10);
+        //setting the thread pool size equal to the max connections size
+        executorService = Executors.newFixedThreadPool(maxConnections);
+    }
+
+    public void setDefaultAccessToken(String defaultAccessToken) {
+        this.defaultAccessToken = defaultAccessToken;
     }
 
     public GetAllRoomsRequestBuilder prepareGetAllRoomsRequestBuilder(String accessToken) {

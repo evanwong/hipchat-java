@@ -4,6 +4,8 @@ repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+
 dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.3.5'
     compile 'org.slf4j:slf4j-api:1.7.7'
