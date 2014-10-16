@@ -45,5 +45,3 @@ uploadArchives {
         }
     }
 }
-
-uploadArchives.onlyIf { ossrhUsername && ossrhPassword }
