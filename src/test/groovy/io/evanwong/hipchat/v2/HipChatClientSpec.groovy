@@ -5,7 +5,6 @@ import io.evanwong.hipchat.v2.rooms.MessageFormat
 import spock.lang.Specification
 
 class HipChatClientSpec extends Specification {
-
     def client = new HipChatClient()
     //fake token
     def token = "fasdfasdfasdfas123123"
@@ -120,6 +119,4 @@ class HipChatClientSpec extends Specification {
 //        "test1"  | "hello123" | false  | MessageColor.GREEN
 //
 //    }
-
-
 }
