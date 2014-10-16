@@ -1,4 +1,4 @@
-package io.evanwong.hipchat.v2.commons;
+package io.evanwong.oss.hipchat.v2.commons;
 
 public class PagingLinks {
     private String self;

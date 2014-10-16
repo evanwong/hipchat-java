@@ -1,6 +1,6 @@
-package io.evanwong.hipchat.v2.rooms;
+package io.evanwong.oss.hipchat.v2.rooms;
 
-import io.evanwong.hipchat.v2.commons.ExpandableRequestBuilder;
+import io.evanwong.oss.hipchat.v2.commons.ExpandableRequestBuilder;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;

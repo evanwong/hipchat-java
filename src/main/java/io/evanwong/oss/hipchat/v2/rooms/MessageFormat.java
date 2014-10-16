@@ -1,4 +1,4 @@
-package io.evanwong.hipchat.v2.rooms;
+package io.evanwong.oss.hipchat.v2.rooms;
 
 public enum MessageFormat {
     HTML("html"), TEXT("text");

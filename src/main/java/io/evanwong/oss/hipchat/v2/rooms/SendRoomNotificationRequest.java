@@ -1,7 +1,7 @@
-package io.evanwong.hipchat.v2.rooms;
+package io.evanwong.oss.hipchat.v2.rooms;
 
-import io.evanwong.hipchat.v2.commons.NoContent;
-import io.evanwong.hipchat.v2.commons.PostRequest;
+import io.evanwong.oss.hipchat.v2.commons.NoContent;
+import io.evanwong.oss.hipchat.v2.commons.PostRequest;
 import org.apache.http.client.HttpClient;
 
 import java.util.HashMap;
