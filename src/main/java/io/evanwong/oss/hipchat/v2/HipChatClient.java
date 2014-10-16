@@ -1,7 +1,7 @@
-package io.evanwong.hipchat.v2;
+package io.evanwong.oss.hipchat.v2;
 
-import io.evanwong.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
-import io.evanwong.hipchat.v2.rooms.SendRoomNotificationRequestBuilder;
+import io.evanwong.oss.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
+import io.evanwong.oss.hipchat.v2.rooms.SendRoomNotificationRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;

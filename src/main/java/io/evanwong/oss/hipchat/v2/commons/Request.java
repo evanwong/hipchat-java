@@ -1,4 +1,4 @@
-package io.evanwong.hipchat.v2.commons;
+package io.evanwong.oss.hipchat.v2.commons;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;

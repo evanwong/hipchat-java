@@ -1,7 +1,7 @@
-package io.evanwong.hipchat.v2
+package io.evanwong.oss.hipchat.v2
 
-import io.evanwong.hipchat.v2.rooms.MessageColor
-import io.evanwong.hipchat.v2.rooms.MessageFormat
+import io.evanwong.oss.hipchat.v2.rooms.MessageColor
+import io.evanwong.oss.hipchat.v2.rooms.MessageFormat
 import spock.lang.Specification
 
 class HipChatClientSpec extends Specification {

@@ -1,6 +1,6 @@
-package io.evanwong.hipchat.v2.rooms;
+package io.evanwong.oss.hipchat.v2.rooms;
 
-import io.evanwong.hipchat.v2.commons.GetRequest;
+import io.evanwong.oss.hipchat.v2.commons.GetRequest;
 import org.apache.http.client.HttpClient;
 
 import java.util.HashMap;

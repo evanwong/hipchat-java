@@ -1,4 +1,4 @@
-package io.evanwong.hipchat.v2.commons;
+package io.evanwong.oss.hipchat.v2.commons;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
