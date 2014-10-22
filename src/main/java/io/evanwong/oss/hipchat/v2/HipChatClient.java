@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2;
 
+import io.evanwong.oss.hipchat.v2.rooms.CreateRoomRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.SendRoomNotificationRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -64,6 +65,14 @@ public class HipChatClient {
 
     public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message) {
         return prepareSendRoomNotificationRequestBuilder(idOrName, message, defaultAccessToken);
+    }
+
+    public CreateRoomRequestBuilder prepareCreateRoomRequestBuilder(String name, String accessToken) {
+        return new CreateRoomRequestBuilder(name, accessToken, httpClient, executorService);
+    }
+
+    public CreateRoomRequestBuilder prepareCreateRoomRequestBuilder(String name) {
+        return prepareCreateRoomRequestBuilder(name, defaultAccessToken);
     }
 
     public void close() {
