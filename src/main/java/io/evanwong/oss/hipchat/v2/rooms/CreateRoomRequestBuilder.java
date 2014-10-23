@@ -42,6 +42,6 @@ public class CreateRoomRequestBuilder extends RequestBuilder {
         if (name == null) {
             throw new IllegalArgumentException("name is required.");
         }
-        return new CreateRoomRequest(topic, guestAcccess, ownerUserId, name, privacy, accessToken, httpClient, executorService);
+        return new CreateRoomRequest(topic, guestAcccess, name, ownerUserId, privacy, accessToken, httpClient, executorService);
     }
 }
