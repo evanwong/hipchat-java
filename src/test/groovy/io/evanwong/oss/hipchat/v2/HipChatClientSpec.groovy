@@ -95,6 +95,22 @@ class HipChatClientSpec extends Specification {
         "adsfasdf" | "user123"   | null            | null        | "topic2"
     }
 
+    def "prepareGetRoomRequestBuilder should create a GetRoomRequest properly"() {
+        setup:
+        def builder = client.prepareGetRoomRequestBuilder(name, token)
+
+        when:
+        def req = builder.build()
+
+        then:
+        req.roomIdOrName == name
+
+        where:
+        name    | _
+        "test1" | _
+        "1test" | _
+    }
+
 //    def "return all rooms for the valid access token"() {
 //        setup:
 //        def token = token
