@@ -4,13 +4,13 @@ import io.evanwong.oss.hipchat.v2.commons.PagingLinks;
 
 import java.util.List;
 
-public class Room {
+public class Rooms {
     private List<RoomItem> items;
     private PagingLinks links;
     private Integer startIndex;
     private Integer maxResults;
 
-    public Room() {
+    public Rooms() {
     }
 
     public List<RoomItem> getItems() {

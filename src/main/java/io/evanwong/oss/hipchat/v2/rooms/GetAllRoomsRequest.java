@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-public class GetAllRoomsRequest extends GetRequest<Room> {
+public class GetAllRoomsRequest extends GetRequest<Rooms> {
 
     private Integer startIndex;
     private Integer maxResults;
