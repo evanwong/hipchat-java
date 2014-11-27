@@ -21,6 +21,10 @@ dependencies {
     runtime 'org.slf4j:slf4j-simple:1.7.7'
 }
 
+test {
+    systemProperty 'hipchat.token', System.properties['hipchat.token']
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -38,5 +42,5 @@ artifacts {
 apply from: 'sonatype.gradle'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+    gradleVersion = '2.2.1'
 }
