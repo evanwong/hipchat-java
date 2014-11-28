@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 
-public abstract class GetRequest<T> extends Request {
+public abstract class GetRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(GetRequest.class);
     protected List<String> expansions = new ArrayList<>();

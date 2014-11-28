@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-public abstract class PostRequest<T> extends Request {
+public abstract class PostRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(PostRequest.class);
 
