@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>xxx</version>
+    <version>0.1</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:xxx'
+compile 'io.evanwong.oss:hipchat-java:0.1'
 ```
 
 To send a notification
