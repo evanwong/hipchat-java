@@ -1,6 +1,7 @@
 package io.evanwong.oss.hipchat.v2.commons;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.message.BasicHeader;
@@ -11,12 +12,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 
-public abstract class GetRequest<T> extends Request {
+public abstract class GetRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(GetRequest.class);
     protected List<String> expansions = new ArrayList<>();
+
+    protected GetRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, httpClient, executorService);
+    }
 
     @Override
     protected HttpResponse request() throws IOException {

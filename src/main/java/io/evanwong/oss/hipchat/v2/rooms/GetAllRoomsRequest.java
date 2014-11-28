@@ -7,19 +7,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-public class GetAllRoomsRequest extends GetRequest<Room> {
+public class GetAllRoomsRequest extends GetRequest<Rooms> {
 
     private Integer startIndex;
     private Integer maxResults;
     private Boolean includeArchived;
 
     GetAllRoomsRequest(Integer startIndex, Integer maxResults, Boolean includeArchived, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, httpClient, executorService);
         this.startIndex = startIndex;
         this.maxResults = maxResults;
         this.includeArchived = includeArchived;
-        this.accessToken = accessToken;
-        this.httpClient = httpClient;
-        this.executorService = executorService;
     }
 
     public Integer getStartIndex() {

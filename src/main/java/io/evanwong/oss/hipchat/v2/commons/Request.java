@@ -31,6 +31,12 @@ public abstract class Request<T> {
     protected abstract HttpResponse request() throws IOException;
     protected abstract String getPath();
 
+    protected Request(String accessToken, HttpClient httpClient, ExecutorService executorService) {
+        this.executorService = executorService;
+        this.accessToken = accessToken;
+        this.httpClient = httpClient;
+    }
+
     public Future<T> execute() {
 
         Future<T> future = executorService.submit(() -> {

@@ -1,6 +1,7 @@
 package io.evanwong.oss.hipchat.v2.commons;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.StringEntity;
@@ -10,10 +11,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
 
-public abstract class PostRequest<T> extends Request {
+public abstract class PostRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(PostRequest.class);
+
+    protected PostRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, httpClient, executorService);
+    }
 
     @Override
     protected HttpResponse request() throws IOException {

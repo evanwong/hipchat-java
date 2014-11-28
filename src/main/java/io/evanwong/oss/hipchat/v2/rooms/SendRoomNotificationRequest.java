@@ -16,15 +16,13 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
     private Boolean notify;
     private MessageFormat messageFormat;
 
-    public SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, MessageFormat messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        this.accessToken = accessToken;
+    SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, MessageFormat messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, httpClient, executorService);
         this.idOrName = idOrName;
         this.color = color;
         this.message = message;
         this.notify = notify;
         this.messageFormat = messageFormat;
-        this.httpClient = httpClient;
-        this.executorService = executorService;
     }
 
     public String getIdOrName() {
