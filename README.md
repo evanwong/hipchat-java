@@ -2,7 +2,7 @@
 
 hipchat-java
 ============
-Java client for the HipChat V2 API. And the implementation is base on [this doc](https://www.hipchat.com/docs/apiv2).
+Java client for the HipChat V2 API. The implementation is base on [this doc](https://www.hipchat.com/docs/apiv2).
 
 
 ###  Requirements:
