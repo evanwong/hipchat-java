@@ -36,53 +36,53 @@ NoContent noContent = future.get();
 
 ### Methods
 ##### CAPABILITIES
-- [] Get capabilities
+- [ ] Get capabilities
 ##### EMOTICONS
-- [] Get emoticon
-- [] Get all emoticons
+- [ ] Get emoticon
+- [ ] Get all emoticons
 ##### OAUTH SESSIONS
-- [] Generate token
-- [] Get session
-- [] Delete session
+- [ ] Generate token
+- [ ] Get session
+- [ ] Delete session
 ##### ROOMS
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
-- [] Update room
-- [] Delete room
-- [] View room history
-- [] Get room message
-- [] View recent room history
-- [] Invite user
-- [] Add member
-- [] Remove member
-- [] Get all members
-- [] Send room notification redirect
+- [ ] Update room
+- [ ] Delete room
+- [ ] View room history
+- [ ] Get room message
+- [ ] View recent room history
+- [ ] Invite user
+- [ ] Add member
+- [ ] Remove member
+- [ ] Get all members
+- [ ] Send room notification redirect
 - [x] Send room notification
-- [] Get all participants
-- [] Reply to message
-- [] Share file with room
-- [] Share link with room
-- [] Get room statistics
-- [] Set topic
-- [] Get all webhooks
-- [] Create webhook
-- [] Get webhook
+- [ ] Get all participants
+- [ ] Reply to message
+- [ ] Share file with room
+- [ ] Share link with room
+- [ ] Get room statistics
+- [ ] Set topic
+- [ ] Get all webhooks
+- [ ] Create webhook
+- [ ] Get webhook
 Delete webhook
 ##### USERS
-- [] Get all users
-- [] Create user
-- [] View user
-- [] Update user
-- [] Delete user
-- [] Get privatechat message
-- [] View recent privatechat history
-- [] Private message user
-- [] Update photo
-- [] Delete photo
-- [] Get auto join rooms
-- [] Share file with user
-- [] Share link with user
+- [ ] Get all users
+- [ ] Create user
+- [ ] View user
+- [ ] Update user
+- [ ] Delete user
+- [ ] Get privatechat message
+- [ ] View recent privatechat history
+- [ ] Private message user
+- [ ] Update photo
+- [ ] Delete photo
+- [ ] Get auto join rooms
+- [ ] Share file with user
+- [ ] Share link with user
 
 ### License
 
