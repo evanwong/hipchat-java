@@ -35,15 +35,19 @@ NoContent noContent = future.get();
 ```
 
 ### Methods
+
 ##### CAPABILITIES
 - [ ] Get capabilities
+
 ##### EMOTICONS
 - [ ] Get emoticon
 - [ ] Get all emoticons
+
 ##### OAUTH SESSIONS
 - [ ] Generate token
 - [ ] Get session
 - [ ] Delete session
+- 
 ##### ROOMS
 - [x] Get all rooms
 - [x] Create room
@@ -68,7 +72,8 @@ NoContent noContent = future.get();
 - [ ] Get all webhooks
 - [ ] Create webhook
 - [ ] Get webhook
-Delete webhook
+- [ ] Delete webhook
+
 ##### USERS
 - [ ] Get all users
 - [ ] Create user
