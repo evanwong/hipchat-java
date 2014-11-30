@@ -47,7 +47,7 @@ NoContent noContent = future.get();
 - [ ] Generate token
 - [ ] Get session
 - [ ] Delete session
-- 
+
 ##### ROOMS
 - [x] Get all rooms
 - [x] Create room
