@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder<GetAllRoomsRequestBuilder> {
+public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder<GetAllRoomsRequestBuilder, GetAllRoomsRequest> {
 
     private Integer startIndex;
     private Integer maxResults;

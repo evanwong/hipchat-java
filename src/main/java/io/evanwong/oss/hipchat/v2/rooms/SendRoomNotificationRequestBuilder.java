@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class SendRoomNotificationRequestBuilder extends RequestBuilder {
+public class SendRoomNotificationRequestBuilder extends RequestBuilder<SendRoomNotificationRequest> {
 
     private String idOrName;
     private MessageColor color;
