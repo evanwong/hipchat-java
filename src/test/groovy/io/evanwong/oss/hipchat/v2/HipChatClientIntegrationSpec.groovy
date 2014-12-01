@@ -67,4 +67,6 @@ class HipChatClientIntegrationSpec extends Specification {
         "test1"  | "hello123" | false  | MessageColor.GREEN
 
     }
+
+
 }
