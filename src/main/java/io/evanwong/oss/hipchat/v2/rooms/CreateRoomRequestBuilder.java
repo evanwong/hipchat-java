@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class CreateRoomRequestBuilder extends RequestBuilder {
+public class CreateRoomRequestBuilder extends RequestBuilder<CreateRoomRequest> {
     private String topic;
     private Boolean guestAcccess;
     private String name;
@@ -38,6 +38,7 @@ public class CreateRoomRequestBuilder extends RequestBuilder {
         return this;
     }
 
+    @Override
     public CreateRoomRequest build() {
         if (name == null) {
             throw new IllegalArgumentException("name is required.");
