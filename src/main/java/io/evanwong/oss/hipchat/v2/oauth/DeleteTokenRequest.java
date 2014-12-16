@@ -7,11 +7,11 @@ import org.apache.http.client.HttpClient;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-public class DeleteOauthTokenRequest extends DeleteRequest<NoContent> {
+public class DeleteTokenRequest extends DeleteRequest<NoContent> {
 
     private final String sessionId;
 
-    DeleteOauthTokenRequest(String sessionId, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    DeleteTokenRequest(String sessionId, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
         this.sessionId = sessionId;
     }
