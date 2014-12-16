@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2
 
+import io.evanwong.oss.hipchat.v2.emoticons.EmoticonType
 import io.evanwong.oss.hipchat.v2.rooms.MessageColor
 import io.evanwong.oss.hipchat.v2.rooms.MessageFormat
 import io.evanwong.oss.hipchat.v2.rooms.Privacy
@@ -148,10 +149,10 @@ class HipChatClientSpec extends Specification {
 
 
         where:
-        type      | maxResults | startIndex | expansions
-        "type123" | 123        | 456        | ["title1", "title2"]
-        "type321" | 321        | 654        | ["title1", "title2"]
-        null      | null       | null       | ["title1"]
-        "type111" | null       | 456        | null
+        type                | maxResults | startIndex | expansions
+        EmoticonType.ALL    | 123        | 456        | ["title1", "title2"]
+        EmoticonType.GLOBAL | 321        | 654        | ["title1", "title2"]
+        null                | null       | null       | ["title1"]
+        EmoticonType.GROUP  | null       | 456        | null
     }
 }
