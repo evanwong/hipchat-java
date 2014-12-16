@@ -49,6 +49,6 @@ public class GetAllEmoticonsRequest extends GetRequest<Emoticons> {
 
     @Override
     protected String getPath() {
-        return "/v2/emoticon";
+        return "/emoticon";
     }
 }
