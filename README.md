@@ -40,8 +40,8 @@ NoContent noContent = future.get();
 - [ ] Get capabilities
 
 ##### EMOTICONS
-- [ ] Get emoticon
-- [ ] Get all emoticons
+- [x] Get emoticon
+- [x] Get all emoticons
 
 ##### OAUTH SESSIONS
 - [ ] Generate token
