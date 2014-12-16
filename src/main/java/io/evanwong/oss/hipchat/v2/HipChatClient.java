@@ -98,7 +98,7 @@ public class HipChatClient {
         return prepareGetAllEmoticonsRequestBuilder(defaultAccessToken);
     }
 
-    private GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder(String accessToken) {
+    public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder(String accessToken) {
         return new GetAllEmoticonsRequestBuilder(accessToken, httpClient, executorService);
     }
 

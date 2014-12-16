@@ -68,5 +68,25 @@ class HipChatClientIntegrationSpec extends Specification {
 
     }
 
+    def "get all emoticons should return a list of emoticon"() {
+        setup:
+        def token = token
+        def request = client.prepareGetAllEmoticonsRequestBuilder(token).build()
+
+        when:
+        def emoticons = request.execute().get()
+
+        then:
+        emoticons != null
+        emoticons.maxResults == 100
+        emoticons.startIndex == 0
+        emoticons.links.next != null
+        emoticons.links.self != null
+        emoticons.items.size() > 0
+        emoticons.items[0].url != null
+        emoticons.items[0].id != null
+        emoticons.items[0].shortcut != null
+        emoticons.items[0].links.self != null
+    }
 
 }
