@@ -18,32 +18,44 @@ public class GenerateTokenRequestBuilder extends RequestBuilder<GenerateTokenReq
     }
 
     public GenerateTokenRequestBuilder setUsername(String username) {
-        generateTokenRequest.setUsername(username);
+        if (username != null) {
+            generateTokenRequest.setUsername(username);
+        }
         return this;
     }
 
     public GenerateTokenRequestBuilder setCode(String code) {
-        generateTokenRequest.setCode(code);
+        if (code != null) {
+            generateTokenRequest.setCode(code);
+        }
         return this;
     }
 
     public GenerateTokenRequestBuilder setRedirectUri(String redirectUri) {
-        generateTokenRequest.setRedirectUri(redirectUri);
+        if (redirectUri != null) {
+            generateTokenRequest.setRedirectUri(redirectUri);
+        }
         return this;
     }
 
     public GenerateTokenRequestBuilder addScope(Scope scope) {
-        generateTokenRequest.addScope(scope);
+        if (scope != null) {
+            generateTokenRequest.addScope(scope);
+        }
         return this;
     }
 
     public GenerateTokenRequestBuilder setPassword(String password) {
-        generateTokenRequest.setPassword(password);
+        if (password != null) {
+            generateTokenRequest.setPassword(password);
+        }
         return this;
     }
 
     public GenerateTokenRequestBuilder setRefreshToken(String refreshToken) {
-        generateTokenRequest.setRefreshToken(refreshToken);
+        if (refreshToken != null) {
+            generateTokenRequest.setRefreshToken(refreshToken);
+        }
         return this;
     }
 

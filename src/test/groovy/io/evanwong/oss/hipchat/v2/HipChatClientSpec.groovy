@@ -1,6 +1,8 @@
 package io.evanwong.oss.hipchat.v2
 
+import io.evanwong.oss.hipchat.v2.commons.Scope
 import io.evanwong.oss.hipchat.v2.emoticons.EmoticonType
+import io.evanwong.oss.hipchat.v2.oauth.GrantType
 import io.evanwong.oss.hipchat.v2.rooms.MessageColor
 import io.evanwong.oss.hipchat.v2.rooms.MessageFormat
 import io.evanwong.oss.hipchat.v2.rooms.Privacy
@@ -154,5 +156,39 @@ class HipChatClientSpec extends Specification {
         EmoticonType.GLOBAL | 321        | 654        | ["title1", "title2"]
         null                | null       | null       | ["title1"]
         EmoticonType.GROUP  | null       | 456        | null
+    }
+
+    def "prepareGenerateTokenRequestBuilder should create a GenerateTokenRequest properly"() {
+        setup:
+        def builder = client.prepareGenerateTokenRequestBuilder(grantType, token)
+        builder = builder.setUsername(username).setCode(code).setRefreshToken(refreshToken)
+        scopes.each {
+            builder = builder.addScope(it)
+        }
+
+        when:
+        def req = builder.build()
+
+        then:
+        req.grantType == grantType
+        req.username == username
+        req.code == code
+        req.refreshToken == refreshToken
+        req.scopes.size() == scopes.size()
+        if (req.scopes && scopes) {
+            req.scopes.each {
+                assert scopes.contains(it)
+            }
+            scopes.each {
+                assert req.scopes.contains(it)
+            }
+        }
+
+        where:
+        grantType                    | username   | code       | refreshToken | scopes
+        GrantType.AUTHORIZATION_CODE | null       | "codecode" | null         | [Scope.ADMIN_GROUP, Scope.ADMIN_ROOM]
+        GrantType.REFRESH_TOKEN      | null       | null       | "tokentoken" | []
+        GrantType.CLIENT_CREDENTIALS | "evanwong" | null       | null         | [Scope.SEND_MESSAGE]
+
     }
 }

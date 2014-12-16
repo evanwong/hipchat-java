@@ -63,6 +63,34 @@ public class GenerateTokenRequest extends PostRequest<Token> {
         this.refreshToken = refreshToken;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public GrantType getGrantType() {
+        return grantType;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public Set<Scope> getScopes() {
+        return scopes;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
     @Override
     protected Map<String, Object> toQueryMap() {
         Map<String, Object> params = new HashMap<>();
