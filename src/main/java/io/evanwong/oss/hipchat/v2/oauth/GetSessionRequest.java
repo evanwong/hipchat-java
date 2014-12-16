@@ -10,7 +10,7 @@ public class GetSessionRequest extends GetRequest<Session> {
 
     private final String sessionId;
 
-    public GetSessionRequest(String sessionId, String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    GetSessionRequest(String sessionId, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
         this.sessionId = sessionId;
     }
