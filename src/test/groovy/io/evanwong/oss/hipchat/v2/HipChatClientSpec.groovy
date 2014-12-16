@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2
 
+import io.evanwong.oss.hipchat.v2.emoticons.EmoticonType
 import io.evanwong.oss.hipchat.v2.rooms.MessageColor
 import io.evanwong.oss.hipchat.v2.rooms.MessageFormat
 import io.evanwong.oss.hipchat.v2.rooms.Privacy
@@ -111,4 +112,47 @@ class HipChatClientSpec extends Specification {
         "1test" | _
     }
 
+    def "prepareGetEmoticonRequestBuilder should create a GetEmoticonRequest properly"() {
+        setup:
+        def builder = client.prepareGetEmoticonRequestBuilder(name, token)
+
+        when:
+        def req = builder.build()
+
+        then:
+        req.idOrShortcut == name
+
+        where:
+        name    | _
+        "test1" | _
+        "1test" | _
+    }
+
+    def "prepareGetAllEmoticonsRequestBuilder should create a GetAllEmoticonsRequest properly"() {
+        setup:
+        def builder = client.prepareGetAllEmoticonsRequestBuilder(token)
+        builder = builder.setType(type)
+        builder = builder.setMaxResults(maxResults)
+        builder = builder.setStartIndex(startIndex)
+        expansions.each {
+            builder = builder.addExpansion(it)
+        }
+
+        when:
+        def req = builder.build()
+
+        then:
+        req.startIndex == startIndex
+        req.maxResults == maxResults
+        req.type == type
+        req.expansions.every { expansions.contains(it) }
+
+
+        where:
+        type                | maxResults | startIndex | expansions
+        EmoticonType.ALL    | 123        | 456        | ["title1", "title2"]
+        EmoticonType.GLOBAL | 321        | 654        | ["title1", "title2"]
+        null                | null       | null       | ["title1"]
+        EmoticonType.GROUP  | null       | 456        | null
+    }
 }

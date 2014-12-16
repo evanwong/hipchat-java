@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-public class GetRoomRequestBuilder extends RequestBuilder {
+public class GetRoomRequestBuilder extends RequestBuilder<GetRoomRequest> {
 
     private String roomIdOrName;
 

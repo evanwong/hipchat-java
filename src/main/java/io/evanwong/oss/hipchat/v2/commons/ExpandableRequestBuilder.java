@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-public abstract class ExpandableRequestBuilder<T> extends RequestBuilder {
+public abstract class ExpandableRequestBuilder<T, E> extends RequestBuilder<E> {
 
     protected final List<String> expansions;
 

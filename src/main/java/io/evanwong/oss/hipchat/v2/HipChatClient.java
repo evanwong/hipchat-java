@@ -1,5 +1,7 @@
 package io.evanwong.oss.hipchat.v2;
 
+import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
+import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.CreateRoomRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.GetRoomRequestBuilder;
@@ -82,6 +84,22 @@ public class HipChatClient {
 
     public GetRoomRequestBuilder prepareGetRoomRequestBuilder(String idOrName) {
         return prepareGetRoomRequestBuilder(idOrName, defaultAccessToken);
+    }
+
+    public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut) {
+        return prepareGetEmoticonRequestBuilder(idOrShortcut);
+    }
+
+    public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut, String accessToken) {
+        return new GetEmoticonRequestBuilder(idOrShortcut, accessToken, httpClient, executorService);
+    }
+
+    public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder() {
+        return prepareGetAllEmoticonsRequestBuilder(defaultAccessToken);
+    }
+
+    public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder(String accessToken) {
+        return new GetAllEmoticonsRequestBuilder(accessToken, httpClient, executorService);
     }
 
     public void close() {
