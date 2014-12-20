@@ -32,6 +32,9 @@ SendRoomNotificationRequestBuilder builder = client.prepareSendRoomNotificationR
 Future<NoContent> future = builder.setColor(Color.YELLOW).setNotify(true).build().execute();
 //optional... if you want/need to inspect the result:
 NoContent noContent = future.get();
+
+//before shutting down the application
+client.close();
 ```
 
 ### Methods
