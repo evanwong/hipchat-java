@@ -89,4 +89,21 @@ class HipChatClientIntegrationSpec extends Specification {
         emoticons.items[0].links.self != null
     }
 
+    def "delete room should delete the room for the given id or name"() {
+        setup:
+        def testRoom = "testdelete"
+        client.prepareCreateRoomRequestBuilder(testRoom, token).build().execute().get()
+        def getBuilder = client.prepareGetRoomRequestBuilder(testRoom, token)
+        def delBuilder = client.prepareDeleteRoomRequestBuilder(testRoom, token).build()
+
+        when:
+        def created = getBuilder.build().execute()?.get()?.id
+        delBuilder.execute().get()
+
+        then:
+        created != null
+        getBuilder.build().execute().get() == null
+
+    }
+
 }

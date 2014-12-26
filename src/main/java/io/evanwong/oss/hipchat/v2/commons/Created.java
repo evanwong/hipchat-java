@@ -12,4 +12,12 @@ public class Created {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Links getLinks() {
+        return links;
+    }
+
+    public void setLinks(Links links) {
+        this.links = links;
+    }
 }

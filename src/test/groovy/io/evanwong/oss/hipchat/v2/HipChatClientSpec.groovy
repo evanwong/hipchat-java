@@ -155,4 +155,13 @@ class HipChatClientSpec extends Specification {
         null                | null       | null       | ["title1"]
         EmoticonType.GROUP  | null       | 456        | null
     }
+
+    def "prepareDeleteRoomRequestBuilder should create a DeleteRoomRequest properly"() {
+        setup:
+        def roomIdOrName = "testdelete"
+        def builder = client.prepareDeleteRoomRequestBuilder(roomIdOrName)
+
+        expect:
+        builder.build().roomIdOrName == roomIdOrName
+    }
 }

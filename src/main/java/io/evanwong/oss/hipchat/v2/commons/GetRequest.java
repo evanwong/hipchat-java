@@ -32,8 +32,10 @@ public abstract class GetRequest<T> extends Request<T> {
         }
         log.info("GET - path: {}, params: {}", getPath(), params);
         String query = params != null && params.size() > 0 ? "?" : "";
-        for (String key : params.keySet()) {
-            query += key + "=" + params.get(key) + "&";
+        if (params != null) {
+            for (String key : params.keySet()) {
+                query += key + "=" + params.get(key) + "&";
+            }
         }
 
         HttpGet httpGet = new HttpGet(BASE_URL + getPath() + query);

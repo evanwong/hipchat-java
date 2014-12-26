@@ -22,6 +22,6 @@ public class GetRoomRequest extends GetRequest<Room> {
 
     @Override
     protected String getPath() {
-        return "/" + roomIdOrName;
+        return "/room/" + roomIdOrName;
     }
 }
