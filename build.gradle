@@ -1,10 +1,46 @@
-apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 repositories {
-        mavenCentral()
+    mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
 }
+
+sourceCompatibility = 1.8
+
+group = 'io.evanwong.oss'
+version = "0.2.0"
+
+dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.3.5'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
+    testCompile "org.codehaus.groovy:groovy-all:2.3.7"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.3-SNAPSHOT"
+    runtime 'org.slf4j:slf4j-simple:1.7.7'
+}
+
+test {
+    systemProperty 'hipchat.token', System.properties['hipchat.token']
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+apply from: 'sonatype.gradle'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+    gradleVersion = '2.2.1'
 }
-
