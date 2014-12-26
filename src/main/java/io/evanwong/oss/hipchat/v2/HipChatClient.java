@@ -2,10 +2,7 @@ package io.evanwong.oss.hipchat.v2;
 
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
-import io.evanwong.oss.hipchat.v2.rooms.CreateRoomRequestBuilder;
-import io.evanwong.oss.hipchat.v2.rooms.GetAllRoomsRequestBuilder;
-import io.evanwong.oss.hipchat.v2.rooms.GetRoomRequestBuilder;
-import io.evanwong.oss.hipchat.v2.rooms.SendRoomNotificationRequestBuilder;
+import io.evanwong.oss.hipchat.v2.rooms.*;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -100,6 +97,14 @@ public class HipChatClient {
 
     public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder(String accessToken) {
         return new GetAllEmoticonsRequestBuilder(accessToken, httpClient, executorService);
+    }
+
+    public DeleteRoomRequestBuilder prepareDeleteRoomRequestBuilder(String roomIdOrName) {
+        return prepareDeleteRoomRequestBuilder(roomIdOrName, defaultAccessToken);
+    }
+
+    public DeleteRoomRequestBuilder prepareDeleteRoomRequestBuilder(String roomIdOrName, String accessToken) {
+        return new DeleteRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
     }
 
     public void close() {
