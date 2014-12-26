@@ -53,7 +53,7 @@ NoContent noContent = future.get();
 - [x] Create room
 - [x] Get room
 - [ ] Update room
-- [ ] Delete room
+- [x] Delete room
 - [ ] View room history
 - [ ] Get room message
 - [ ] View recent room history

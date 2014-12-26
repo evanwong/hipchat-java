@@ -1,9 +1,12 @@
 package io.evanwong.oss.hipchat.v2.rooms;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import io.evanwong.oss.hipchat.v2.commons.Links;
 
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Room {
     private String xmppJid;
     private Links statistics;
@@ -71,6 +74,13 @@ public class Room {
 
     public void setPrivacy(Privacy privacy) {
         this.privacy = privacy;
+    }
+
+    @JsonSetter("privacy")
+    public void setPrivacyStr(String privacyStr) {
+        if (privacyStr != null) {
+            this.privacy = Privacy.valueOf(privacyStr.toUpperCase());
+        }
     }
 
     public Boolean getIsGuestAccessible() {
