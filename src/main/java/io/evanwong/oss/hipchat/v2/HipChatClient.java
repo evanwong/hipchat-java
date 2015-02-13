@@ -107,6 +107,14 @@ public class HipChatClient {
         return new DeleteRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
     }
 
+    public RemoveRoomMemberRequestBuilder prepareRemoveRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName) {
+        return prepareRemoveRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, defaultAccessToken);
+    }
+
+    public RemoveRoomMemberRequestBuilder prepareRemoveRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName, String accessToken) {
+        return new RemoveRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, httpClient, executorService);
+    }
+
     public void close() {
         log.info("Shutting down...");
         try {
