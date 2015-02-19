@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.2.0'
+compile 'io.evanwong.oss:hipchat-java:0.3.0'
 ```
 
 To send a notification
@@ -58,8 +58,8 @@ NoContent noContent = future.get();
 - [ ] Get room message
 - [ ] View recent room history
 - [ ] Invite user
-- [ ] Add member
-- [ ] Remove member
+- [x] Add member
+- [x] Remove member
 - [ ] Get all members
 - [ ] Send room notification redirect
 - [x] Send room notification
