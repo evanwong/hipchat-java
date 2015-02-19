@@ -164,4 +164,26 @@ class HipChatClientSpec extends Specification {
         expect:
         builder.build().roomIdOrName == roomIdOrName
     }
+
+    def "prepareRemoveRoomMemberRequestBuilder should create a RemoveRoomMemberRequest properly"() {
+        setup:
+        def roomIdOrName = "testdelete"
+        def userIdOrEmail = "testdeletemail"
+        def builder = client.prepareRemoveRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName)
+
+        expect:
+        builder.build().roomIdOrName == roomIdOrName
+        builder.build().userIdOrEmail == userIdOrEmail
+    }
+
+    def "prepareAddRoomMemberRequestBuilder should create a AddRoomMemberRequest properly"() {
+        setup:
+        def roomIdOrName = "testadd"
+        def userIdOrEmail = "testaddemail"
+        def builder = client.prepareAddRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName)
+
+        expect:
+        builder.build().roomIdOrName == roomIdOrName
+        builder.build().userIdOrEmail == userIdOrEmail
+    }
 }
