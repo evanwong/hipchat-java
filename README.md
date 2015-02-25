@@ -29,7 +29,7 @@ To send a notification
 String defaultAccessToken = "abcd1234";
 HipChatClient client = new HipChatClient(defaultAccessToken);
 SendRoomNotificationRequestBuilder builder = client.prepareSendRoomNotificationRequestBuilder("myRoom", "hello world!");
-Future<NoContent> future = builder.setColor(Color.YELLOW).setNotify(true).build().execute();
+Future<NoContent> future = builder.setColor(MessageColor.YELLOW).setNotify(true).build().execute();
 //optional... if you want/need to inspect the result:
 NoContent noContent = future.get();
 ```
