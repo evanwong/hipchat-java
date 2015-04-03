@@ -2,14 +2,25 @@ apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
+buildscript {
+    repositories {
+        mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:2.5.0'
+    }
+}
+apply plugin: 'me.tatarka.retrolambda'
+
 repositories {
     mavenCentral()
     maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
-sourceCompatibility = 1.8
-
 group = 'io.evanwong.oss'
+archivesBaseName = 'hipchat-java7'
 version = "0.3.0"
 
 dependencies {
@@ -17,7 +28,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
     testCompile "org.codehaus.groovy:groovy-all:2.3.7"
-    testCompile "org.spockframework:spock-core:1.0-groovy-2.3-SNAPSHOT"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
     testRuntime 'org.slf4j:slf4j-simple:1.7.7'
 }
 
