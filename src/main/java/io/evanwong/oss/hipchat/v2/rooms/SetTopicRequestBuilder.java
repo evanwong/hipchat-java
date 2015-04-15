@@ -7,12 +7,12 @@ import java.util.concurrent.ExecutorService;
 
 public class SetTopicRequestBuilder extends RequestBuilder<SetTopicRequest> {
 
-    private String idOrName;
+    private String roomIdOrName;
     private String topic;
 
     public SetTopicRequestBuilder(String idOrName, String topic, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
-        this.idOrName = idOrName;
+        this.roomIdOrName = idOrName;
         this.topic = topic;
     }
 
@@ -21,9 +21,9 @@ public class SetTopicRequestBuilder extends RequestBuilder<SetTopicRequest> {
         if (topic == null) {
             throw new IllegalArgumentException("topic is required.");
         }
-        if (idOrName == null) {
+        if (roomIdOrName == null) {
             throw new IllegalArgumentException("idOrName is required.");
         }
-        return new SetTopicRequest(idOrName, topic, accessToken, httpClient, executorService);
+        return new SetTopicRequest(roomIdOrName, topic, accessToken, httpClient, executorService);
     }
 }

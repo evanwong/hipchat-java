@@ -10,17 +10,17 @@ import java.util.concurrent.ExecutorService;
 
 public class SetTopicRequest extends PutRequest<NoContent> {
     
-    private String idOrName;
+    private String roomIdOrName;
     private String topic;
 
     public SetTopicRequest(String idOrName, String topic, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
-        this.idOrName = idOrName;
+        this.roomIdOrName = idOrName;
         this.topic = topic;
     }
 
-    public String getIdOrName() {
-        return idOrName;
+    public String getRoomIdOrName() {
+        return roomIdOrName;
     }
 
     public String getTopic() {
@@ -29,7 +29,7 @@ public class SetTopicRequest extends PutRequest<NoContent> {
 
     @Override
     protected String getPath() {
-        return "/room/" + this.idOrName + "/topic";
+        return "/room/" + this.roomIdOrName + "/topic";
     }
     
     @Override
