@@ -105,5 +105,21 @@ class HipChatClientIntegrationSpec extends Specification {
         getBuilder.build().execute().get() == null
 
     }
+    
+    def "set topic should set the room topic to the given topic"() {
+        setup:
+        def testTopic = "test topic"
+        def room = "test1"
+        
+        when:
+        client.prepareSetTopicRequestBuilder(room, testTopic, token).build().execute().get()
+        
+        then:
+        client.prepareGetRoomRequestBuilder("test1", token).build().execute().get().topic == testTopic
+        
+        cleanup:
+        client.prepareSetTopicRequestBuilder(room, "", token).build().execute().get()
+        
+    }
 
 }

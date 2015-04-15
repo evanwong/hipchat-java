@@ -186,4 +186,15 @@ class HipChatClientSpec extends Specification {
         builder.build().roomIdOrName == roomIdOrName
         builder.build().userIdOrEmail == userIdOrEmail
     }
+    
+    def "prepareSetTopicRequestBuilder should create a SetTopicRequest properly"() {
+        setup:
+        def roomIdOrName = "testsettopic"
+        def topic = "topic"
+        def builder = client.prepareSetTopicRequestBuilder(roomIdOrName, topic)
+        
+        expect:
+        builder.build().roomIdOrName == roomIdOrName
+        builder.build().topic == topic
+    }
 }

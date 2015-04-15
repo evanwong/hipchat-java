@@ -123,6 +123,14 @@ public class HipChatClient {
         return new AddRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, httpClient, executorService);
     }
 
+    public SetTopicRequestBuilder prepareSetTopicRequestBuilder(String roomIdOrName, String topic) {
+        return prepareSetTopicRequestBuilder(roomIdOrName, topic, defaultAccessToken);
+    }
+
+    public SetTopicRequestBuilder prepareSetTopicRequestBuilder(String roomIdOrName, String topic, String accessToken) {
+        return new SetTopicRequestBuilder(roomIdOrName, topic, accessToken, httpClient, executorService);
+    }
+
     public void close() {
         log.info("Shutting down...");
         try {
