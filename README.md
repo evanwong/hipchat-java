@@ -24,6 +24,21 @@ To add this client into your project:
 compile 'io.evanwong.oss:hipchat-java:0.3.0'
 ```
 
+If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
+
+* maven
+```xml
+<dependency>
+    <groupId>io.evanwong.oss</groupId>
+    <artifactId>hipchat-java7</artifactId>
+    <version>0.3.0</version>
+</dependency>
+```
+* gradle
+```gradle
+compile 'io.evanwong.oss:hipchat-java7:0.3.0'
+```
+
 To send a notification
 ```java
 String defaultAccessToken = "abcd1234";
