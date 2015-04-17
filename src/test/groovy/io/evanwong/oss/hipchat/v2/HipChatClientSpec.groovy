@@ -197,4 +197,19 @@ class HipChatClientSpec extends Specification {
         builder.build().roomIdOrName == roomIdOrName
         builder.build().topic == topic
     }
+    
+    def "prepareUpdateRoomRequestBuilder should create a UpdateRoomRequestBuilder properly"() {
+        setup:
+        def roomIdOrName = "test update room"
+        def builder = client.prepareUpdateRoomRequestBuilder(roomIdOrName)
+        def newname = "newname"
+        def updateRoomReq = builder.setName(newname).setPrivacy(Privacy.PRIVATE).build()
+        
+        expect:
+        updateRoomReq.roomIdOrName == roomIdOrName
+        updateRoomReq.archived == false
+        updateRoomReq.guestAccessible == false
+        updateRoomReq.privacy == Privacy.PRIVATE
+        updateRoomReq.name == newname
+    }
 }
