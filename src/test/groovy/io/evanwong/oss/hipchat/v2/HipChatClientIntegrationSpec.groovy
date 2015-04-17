@@ -130,9 +130,9 @@ class HipChatClientIntegrationSpec extends Specification {
 
     def "update room should update the room properly"() {
         setup:
-        def newname = "newname"
+        def newname = "new name"
         def newtopic = "new topic"
-        def roomName = "testUpdateRoom"
+        def roomName = "test update room"
         client.prepareCreateRoomRequestBuilder(roomName, token).build().execute().get()
 
         when:
