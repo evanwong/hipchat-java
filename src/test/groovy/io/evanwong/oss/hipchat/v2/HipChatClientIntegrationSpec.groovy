@@ -2,6 +2,7 @@ package io.evanwong.oss.hipchat.v2
 
 import io.evanwong.oss.hipchat.v2.commons.NoContent
 import io.evanwong.oss.hipchat.v2.rooms.MessageColor
+import io.evanwong.oss.hipchat.v2.rooms.Privacy
 import io.evanwong.oss.hipchat.v2.rooms.Room
 import io.evanwong.oss.hipchat.v2.rooms.Rooms
 import spock.lang.Specification
@@ -129,21 +130,23 @@ class HipChatClientIntegrationSpec extends Specification {
 
     def "update room should update the room properly"() {
         setup:
-        def newname = "new name"
+        def newname = "newname"
         def newtopic = "new topic"
-        def roomName = "test1"
+        def roomName = "testUpdateRoom"
+        client.prepareCreateRoomRequestBuilder(roomName, token).build().execute().get()
 
         when:
-        client.prepareUpdateRoomRequestBuilder(roomName, token).setName(newname).setGuestAccessible(true).setTopic(newtopic).build().execute().get()
-        Room rslt = client.prepareGetRoomRequestBuilder("test1", token).build().execute().get()
+        client.prepareUpdateRoomRequestBuilder(roomName, token).setName(newname).setGuestAccessible(true).setTopic(newtopic).setPrivacy(Privacy.PUBLIC).setOwnerIdOrEmail("evan@evanwong.io").build().execute().get()
+        Room rslt = client.prepareGetRoomRequestBuilder(newname, token).build().execute().get()
+        println rslt
 
         then:
         rslt.name == newname
         rslt.topic == newtopic
-        rslt.isGuestAccessible == true
+        rslt.privacy == Privacy.PUBLIC
 
         cleanup:
-        client.prepareUpdateRoomRequestBuilder(newname, token).setName(roomName).setGuestAccessible(false).setTopic("")
+        client.prepareDeleteRoomRequestBuilder(newname, token).build().execute().get()
     }
 
 }
