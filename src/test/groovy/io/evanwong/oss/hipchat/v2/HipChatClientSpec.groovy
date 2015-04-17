@@ -203,7 +203,7 @@ class HipChatClientSpec extends Specification {
         def roomIdOrName = "test update room"
         def builder = client.prepareUpdateRoomRequestBuilder(roomIdOrName)
         def newname = "newname"
-        def updateRoomReq = builder.setName(newname).setPrivacy(Privacy.PRIVATE).build()
+        def updateRoomReq = builder.setName(newname).setPrivacy(Privacy.PRIVATE).setOwnerIdOrEmail("owner@email.com").setGuestAccessible(false).setArchived(false).setTopic("newtopic").build()
         
         expect:
         updateRoomReq.roomIdOrName == roomIdOrName
