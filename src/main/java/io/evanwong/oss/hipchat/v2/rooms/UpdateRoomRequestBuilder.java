@@ -7,61 +7,60 @@ import java.util.concurrent.ExecutorService;
 
 public class UpdateRoomRequestBuilder extends RequestBuilder<UpdateRoomRequest> {
 
-    private String roomIdOrName;
-    private String name;
-    private Privacy	privacy;
-    private Boolean	archived;
-    private Boolean	guestAccessible;
-    private String topic;
-    private String ownerIdOrEmail;
+    private UpdateRoomRequest updateRoomRequest;
 
     public UpdateRoomRequestBuilder(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, httpClient, executorService);
-        this.roomIdOrName = roomIdOrName;
+        this.updateRoomRequest = new UpdateRoomRequest(roomIdOrName, accessToken, httpClient, executorService);
     }
 
     public UpdateRoomRequestBuilder setName(String name) {
-        this.name = name;
+        this.updateRoomRequest.setName(name);
         return this;
     }
 
     public UpdateRoomRequestBuilder setPrivacy(Privacy privacy) {
-        this.privacy = privacy;
+        this.updateRoomRequest.setPrivacy(privacy);
         return this;
     }
 
     public UpdateRoomRequestBuilder setArchived(Boolean archived) {
-        this.archived = archived;
+        this.updateRoomRequest.setArchived(archived);
         return this;
     }
 
     public UpdateRoomRequestBuilder setGuestAccessible(Boolean guestAccessible) {
-        this.guestAccessible = guestAccessible;
+        this.updateRoomRequest.setGuestAccessible(guestAccessible);
         return this;
     }
 
     public UpdateRoomRequestBuilder setTopic(String topic) {
-        this.topic = topic;
+        this.updateRoomRequest.setTopic(topic);
         return this;
     }
 
     public UpdateRoomRequestBuilder setOwnerIdOrEmail(String ownerIdOrEmail) {
-        this.ownerIdOrEmail = ownerIdOrEmail;
+        this.updateRoomRequest.setOwnerIdOrEmail(ownerIdOrEmail);
         return this;
     }
 
     @Override
     public UpdateRoomRequest build() {
-        if (this.roomIdOrName == null) {
+        if (updateRoomRequest.getRoomIdOrName() == null) {
             throw new IllegalArgumentException("roomIdOrName is required.");
         }
-        UpdateRoomRequest request = new UpdateRoomRequest(this.roomIdOrName, this.accessToken, this.httpClient, this.executorService);
-        request.setArchived(this.archived);
-        request.setName(this.name);
-        request.setPrivacy(this.privacy);
-        request.setGuestAccessible(this.guestAccessible);
-        request.setTopic(this.topic);
-        request.setOwnerIdOrEmail(this.ownerIdOrEmail);
-        return request;
+        if (updateRoomRequest.getName() == null) {
+            throw new IllegalArgumentException("name is required.");
+        }
+        if (updateRoomRequest.getOwnerIdOrEmail() == null) {
+            throw new IllegalArgumentException("ownerIdOrEmail is required.");
+        }
+        if (updateRoomRequest.getPrivacy() == null) {
+            throw new IllegalArgumentException("privacy is required.");
+        }
+        if (updateRoomRequest.getTopic() == null) {
+            throw new IllegalArgumentException("topic is required.");
+        }
+        return updateRoomRequest;
     }
 }

@@ -12,9 +12,9 @@ import java.util.concurrent.ExecutorService;
 public class UpdateRoomRequest extends PutRequest<NoContent> {
     private String roomIdOrName;
     private String name;
-    private Privacy	privacy;
-    private Boolean	archived;
-    private Boolean	guestAccessible;
+    private Privacy privacy;
+    private boolean archived;
+    private boolean guestAccessible;
     private String topic;
     private String ownerIdOrEmail;
 
@@ -43,19 +43,19 @@ public class UpdateRoomRequest extends PutRequest<NoContent> {
         this.privacy = privacy;
     }
 
-    public Boolean getArchived() {
+    public boolean getArchived() {
         return archived;
     }
 
-    public void setArchived(Boolean archived) {
+    public void setArchived(boolean archived) {
         this.archived = archived;
     }
 
-    public Boolean getGuestAccessible() {
+    public boolean getGuestAccessible() {
         return guestAccessible;
     }
 
-    public void setGuestAccessible(Boolean guestAccessible) {
+    public void setGuestAccessible(boolean guestAccessible) {
         this.guestAccessible = guestAccessible;
     }
 
@@ -83,24 +83,12 @@ public class UpdateRoomRequest extends PutRequest<NoContent> {
     @Override
     protected Map<String, Object> toQueryMap() {
         Map<String, Object> params = new HashMap<>();
-        if (topic != null) {
-            params.put("topic", topic);
-        }
-        if (guestAccessible != null) {
-            params.put("is_guest_accessible", guestAccessible);
-        }
-        if (name != null) {
-            params.put("name", name);
-        }
-        if (archived != null) {
-            params.put("is_archived", archived);
-        }
-        if (privacy != null) {
-            params.put("privacy", privacy.getValue());
-        }
-        if (ownerIdOrEmail != null) {
-            params.put("owner", Collections.singletonMap("id", ownerIdOrEmail));
-        }
+        params.put("topic", topic);
+        params.put("is_guest_accessible", guestAccessible);
+        params.put("name", name);
+        params.put("is_archived", archived);
+        params.put("privacy", privacy.getValue());
+        params.put("owner", Collections.singletonMap("id", ownerIdOrEmail));
         return params;
     }
 }
