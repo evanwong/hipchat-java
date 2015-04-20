@@ -67,7 +67,7 @@ NoContent noContent = future.get();
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
-- [ ] Update room
+- [x] Update room
 - [x] Delete room
 - [ ] View room history
 - [ ] Get room message
@@ -83,7 +83,7 @@ NoContent noContent = future.get();
 - [ ] Share file with room
 - [ ] Share link with room
 - [ ] Get room statistics
-- [ ] Set topic
+- [x] Set topic
 - [ ] Get all webhooks
 - [ ] Create webhook
 - [ ] Get webhook
