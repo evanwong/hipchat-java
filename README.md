@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.3.0'
+compile 'io.evanwong.oss:hipchat-java:0.4.0'
 ```
 
 If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
@@ -31,12 +31,12 @@ If you are using Java 7, there is a temporary workaround using [retrolambda](htt
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java7</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java7:0.3.0'
+compile 'io.evanwong.oss:hipchat-java7:0.4.0'
 ```
 
 To send a notification
