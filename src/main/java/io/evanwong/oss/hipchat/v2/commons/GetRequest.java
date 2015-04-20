@@ -30,7 +30,8 @@ public abstract class GetRequest<T> extends Request<T> {
         if (!expansions.isEmpty()) {
             params.put("expand", expansions.stream().collect(Collectors.joining(",")));
         }
-        log.info("GET - path: {}, params: {}", getPath(), params);
+        String encodedPath = getEncodedPath();
+        log.info("GET - path: {}, params: {}", encodedPath, params);
         String query = params != null && params.size() > 0 ? "?" : "";
         if (params != null) {
             for (String key : params.keySet()) {
@@ -38,7 +39,7 @@ public abstract class GetRequest<T> extends Request<T> {
             }
         }
 
-        HttpGet httpGet = new HttpGet(BASE_URL + getPath() + query);
+        HttpGet httpGet = new HttpGet(BASE_URL + encodedPath + query);
         httpGet.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         return httpClient.execute(httpGet, HttpClientContext.create());
     }

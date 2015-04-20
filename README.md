@@ -16,12 +16,27 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.3.0'
+compile 'io.evanwong.oss:hipchat-java:0.4.0'
+```
+
+If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
+
+* maven
+```xml
+<dependency>
+    <groupId>io.evanwong.oss</groupId>
+    <artifactId>hipchat-java7</artifactId>
+    <version>0.4.0</version>
+</dependency>
+```
+* gradle
+```gradle
+compile 'io.evanwong.oss:hipchat-java7:0.4.0'
 ```
 
 To send a notification
@@ -52,7 +67,7 @@ NoContent noContent = future.get();
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
-- [ ] Update room
+- [x] Update room
 - [x] Delete room
 - [ ] View room history
 - [ ] Get room message
@@ -68,7 +83,7 @@ NoContent noContent = future.get();
 - [ ] Share file with room
 - [ ] Share link with room
 - [ ] Get room statistics
-- [ ] Set topic
+- [x] Set topic
 - [ ] Get all webhooks
 - [ ] Create webhook
 - [ ] Get webhook

@@ -22,6 +22,7 @@ repositories {
 group = 'io.evanwong.oss'
 archivesBaseName = 'hipchat-java7'
 version = "0.3.0"
+version = "0.4.0"
 
 dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.3.5'
@@ -55,5 +56,5 @@ if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+    gradleVersion = '2.3'
 }

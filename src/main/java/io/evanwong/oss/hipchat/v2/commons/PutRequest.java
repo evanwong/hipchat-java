@@ -24,9 +24,10 @@ public abstract class PutRequest<T> extends Request<T> {
     @Override
     protected HttpResponse request() throws IOException {
         Map<String, Object> params = toQueryMap();
-        log.info("PUT - path: {}, params: {}", getPath(), params);
+        String encodedPath = getEncodedPath();
+        log.info("PUT - path: {}, params: {}", encodedPath, params);
 
-        HttpPut httpPut = new HttpPut(BASE_URL + getPath());
+        HttpPut httpPut = new HttpPut(BASE_URL + encodedPath);
         httpPut.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPut.addHeader(new BasicHeader("Content-Type", "application/json"));
         httpPut.setEntity(new StringEntity(objectWriter.writeValueAsString(params)));

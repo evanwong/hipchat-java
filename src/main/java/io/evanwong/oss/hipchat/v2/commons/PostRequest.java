@@ -24,9 +24,10 @@ public abstract class PostRequest<T> extends Request<T> {
     @Override
     protected HttpResponse request() throws IOException {
         Map<String, Object> params = toQueryMap();
-        log.info("POST - path: {}, params: {}", getPath(), params);
+        String encodedPath = getEncodedPath();
+        log.info("POST - path: {}, params: {}", encodedPath, params);
 
-        HttpPost httpPost = new HttpPost(BASE_URL + getPath());
+        HttpPost httpPost = new HttpPost(BASE_URL + encodedPath);
         httpPost.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPost.addHeader(new BasicHeader("Content-Type", "application/json"));
         httpPost.setEntity(new StringEntity(objectWriter.writeValueAsString(params)));
