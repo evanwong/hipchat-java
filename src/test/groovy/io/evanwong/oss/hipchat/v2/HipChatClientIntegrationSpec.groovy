@@ -26,7 +26,6 @@ class HipChatClientIntegrationSpec extends Specification {
         def token = token
         def request = client.prepareGetAllRoomsRequestBuilder(token).build()
 
-
         when:
         Rooms rooms = request.execute().get()
 
@@ -37,6 +36,20 @@ class HipChatClientIntegrationSpec extends Specification {
             assert it.links != null
             assert it.links.self != null
         }
+    }
+
+    def "get room should return a given room"() {
+        setup:
+        client.prepareCreateRoomRequestBuilder("getRoom", token).setTopic("t1").setPrivacy(Privacy.PUBLIC).setGuestAcccess(true).build().execute().get()
+        def request = client.prepareGetRoomRequestBuilder("getRoom", token).build()
+
+        when:
+        def room = request.execute().get()
+
+        then:
+        room.topic == "t1"
+        room.privacy == Privacy.PUBLIC
+        room.isGuestAccessible == false
     }
 
     def "same access token should have the same behaviours"() {
