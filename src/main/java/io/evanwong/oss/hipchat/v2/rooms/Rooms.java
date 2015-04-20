@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2.rooms;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import io.evanwong.oss.hipchat.v2.commons.PagingLinks;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class Rooms {
         return startIndex;
     }
 
+    @JsonSetter("startIndex")
     public void setStartIndex(Integer startIndex) {
         this.startIndex = startIndex;
     }
@@ -41,6 +43,7 @@ public class Rooms {
         return maxResults;
     }
 
+    @JsonSetter("maxResults")
     public void setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
     }

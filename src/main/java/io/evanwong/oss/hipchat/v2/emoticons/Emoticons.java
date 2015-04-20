@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2.emoticons;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import io.evanwong.oss.hipchat.v2.commons.PagingLinks;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class Emoticons {
         return startIndex;
     }
 
+    @JsonSetter("startIndex")
     public void setStartIndex(Integer startIndex) {
         this.startIndex = startIndex;
     }
@@ -38,6 +40,7 @@ public class Emoticons {
         return maxResults;
     }
 
+    @JsonSetter("maxResults")
     public void setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
     }
