@@ -49,6 +49,8 @@ Future<NoContent> future = builder.setColor(MessageColor.YELLOW).setNotify(true)
 NoContent noContent = future.get();
 ```
 
+* **Javadoc**: [Link](http://evanwong.github.io/hipchat-java/javadoc)
+
 ### Methods
 
 ##### CAPABILITIES
