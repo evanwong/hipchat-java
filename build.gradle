@@ -25,6 +25,11 @@ test {
     systemProperty 'hipchat.token', System.properties['hipchat.token']
 }
 
+javadoc {
+    println "1234"
+    options.links = ["http://docs.oracle.com/javase/8/docs/api/"]
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
