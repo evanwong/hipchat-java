@@ -59,6 +59,14 @@ public class HipChatClient {
         return prepareGetAllRoomsRequestBuilder(defaultAccessToken);
     }
 
+    public SendRoomMessageRequestBuilder prepareSendRoomMessageRequestBuilder(String idOrName, String message, String accessToken) {
+        return new SendRoomMessageRequestBuilder(idOrName, message, accessToken, httpClient, executorService);
+    }
+
+    public SendRoomMessageRequestBuilder prepareSendRoomMessageRequestBuilder(String idOrName, String message) {
+        return prepareSendRoomMessageRequestBuilder(idOrName, message, defaultAccessToken);
+    }
+
     public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken) {
         return new SendRoomNotificationRequestBuilder(idOrName, message, accessToken, httpClient, executorService);
     }
