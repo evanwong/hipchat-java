@@ -8,6 +8,7 @@ public class EmoticonItem {
     private Links links;
     private String id;
     private String shortcut;
+    private EmoticonType type;
 
     public String getUrl() {
         return url;
@@ -39,5 +40,13 @@ public class EmoticonItem {
 
     public void setShortcut(String shortcut) {
         this.shortcut = shortcut;
+    }
+
+    public EmoticonType getType() {
+        return type;
+    }
+
+    public void setType(EmoticonType type) {
+        this.type = type;
     }
 }
