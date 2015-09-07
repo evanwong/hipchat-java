@@ -3,6 +3,7 @@ package io.evanwong.oss.hipchat.v2;
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.*;
+import io.evanwong.oss.hipchat.v2.users.GetUserRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -91,6 +92,14 @@ public class HipChatClient {
         return prepareGetRoomRequestBuilder(idOrName, defaultAccessToken);
     }
 
+    public GetRoomMembersRequestBuilder prepareGetRoomMembersRequestBuilder(String idOrName, String accessToken) {
+        return new GetRoomMembersRequestBuilder(idOrName, accessToken, httpClient, executorService);
+    }
+
+    public GetRoomMembersRequestBuilder prepareGetRoomMembersRequestBuilder(String idOrName) {
+        return prepareGetRoomMembersRequestBuilder(idOrName, defaultAccessToken);
+    }
+
     public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut) {
         return prepareGetEmoticonRequestBuilder(idOrShortcut);
     }
@@ -145,6 +154,14 @@ public class HipChatClient {
 
     public UpdateRoomRequestBuilder prepareUpdateRoomRequestBuilder(String roomIdOrName, String accessToken) {
         return new UpdateRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
+    }
+
+    public GetUserRequestBuilder prepareGetUserRequestBuilder(String userIdOrName) {
+        return prepareGetUserRequestBuilder(userIdOrName, defaultAccessToken);
+    }
+
+    public GetUserRequestBuilder prepareGetUserRequestBuilder(String userIdOrName, String accessToken) {
+        return new GetUserRequestBuilder(userIdOrName, accessToken, httpClient, executorService);
     }
 
     public void close() {

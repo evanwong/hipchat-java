@@ -2,6 +2,7 @@ package io.evanwong.oss.hipchat.v2.rooms;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.evanwong.oss.hipchat.v2.commons.Links;
+import io.evanwong.oss.hipchat.v2.users.User;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class Room {
     private String topic;
     private Long id;
     private String guestAccessUrl;
+    private User owner;
 
     public String getXmppJid() {
         return xmppJid;
@@ -105,5 +107,13 @@ public class Room {
 
     public void setGuestAccessUrl(String guestAccessUrl) {
         this.guestAccessUrl = guestAccessUrl;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
