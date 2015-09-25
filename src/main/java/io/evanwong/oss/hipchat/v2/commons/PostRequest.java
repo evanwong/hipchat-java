@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2.commons;
 
+import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -30,7 +31,7 @@ public abstract class PostRequest<T> extends Request<T> {
         HttpPost httpPost = new HttpPost(BASE_URL + encodedPath);
         httpPost.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPost.addHeader(new BasicHeader("Content-Type", "application/json"));
-        httpPost.setEntity(new StringEntity(objectWriter.writeValueAsString(params)));
+        httpPost.setEntity(new StringEntity(objectWriter.writeValueAsString(params), Consts.UTF_8));
         return httpClient.execute(httpPost, HttpClientContext.create());
     }
 }
