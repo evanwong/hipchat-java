@@ -3,6 +3,10 @@ package io.evanwong.oss.hipchat.v2;
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.*;
+import io.evanwong.oss.hipchat.v2.users.CreateUserRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.DeleteUserRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.GetAllUsersRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.ViewUserRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -92,7 +96,7 @@ public class HipChatClient {
     }
 
     public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut) {
-        return prepareGetEmoticonRequestBuilder(idOrShortcut);
+        return prepareGetEmoticonRequestBuilder(idOrShortcut, defaultAccessToken);
     }
 
     public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut, String accessToken) {
@@ -145,6 +149,40 @@ public class HipChatClient {
 
     public UpdateRoomRequestBuilder prepareUpdateRoomRequestBuilder(String roomIdOrName, String accessToken) {
         return new UpdateRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
+    }
+
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken)
+    {
+        return new CreateUserRequestBuilder(username, password, emailaddress, accessToken, httpClient, executorService);
+    }
+
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress)
+    {
+        return prepareCreateUserRequestBuilder(username, password, emailaddress, defaultAccessToken);
+    }
+
+    public GetAllUsersRequestBuilder prepareGetAllUsersRequestBuilder(String accessToken) {
+        return new GetAllUsersRequestBuilder(accessToken, httpClient, executorService);
+    }
+
+    public GetAllUsersRequestBuilder prepareGetAllUsersRequestBuilder() {
+        return prepareGetAllUsersRequestBuilder(defaultAccessToken);
+    }
+
+    private ViewUserRequestBuilder prepareViewUserRequestBuilder(String idOrEmail, String accessToken) {
+        return new ViewUserRequestBuilder(idOrEmail, accessToken, httpClient, executorService);
+    }
+
+    public ViewUserRequestBuilder prepareViewUserRequestBuilder(String idOrEmail) {
+        return prepareViewUserRequestBuilder(idOrEmail, defaultAccessToken);
+    }
+
+    private DeleteUserRequestBuilder prepareDeleteUserRequestBuilder(String idOrEmail, String accessToken) {
+        return new DeleteUserRequestBuilder(idOrEmail, accessToken, httpClient, executorService);
+    }
+
+    public DeleteUserRequestBuilder prepareDeleteUserRequestBuilder(String idOrEmail) {
+        return prepareDeleteUserRequestBuilder(idOrEmail, defaultAccessToken);
     }
 
     public void close() {
