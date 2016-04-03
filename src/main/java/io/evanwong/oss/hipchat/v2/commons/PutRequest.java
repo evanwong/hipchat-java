@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2.commons;
 
+import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPut;
@@ -30,7 +31,7 @@ public abstract class PutRequest<T> extends Request<T> {
         HttpPut httpPut = new HttpPut(BASE_URL + encodedPath);
         httpPut.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPut.addHeader(new BasicHeader("Content-Type", "application/json"));
-        httpPut.setEntity(new StringEntity(objectWriter.writeValueAsString(params)));
+        httpPut.setEntity(new StringEntity(objectWriter.writeValueAsString(params), Consts.UTF_8));
         return httpClient.execute(httpPut, HttpClientContext.create());
     }
 }

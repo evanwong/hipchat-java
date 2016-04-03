@@ -1,13 +1,14 @@
 package io.evanwong.oss.hipchat.v2.rooms;
 
-import io.evanwong.oss.hipchat.v2.commons.DeleteRequest;
 import io.evanwong.oss.hipchat.v2.commons.NoContent;
+import io.evanwong.oss.hipchat.v2.commons.PutRequest;
 import org.apache.http.client.HttpClient;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
-public class AddRoomMemberRequest extends DeleteRequest<NoContent> {
+public class AddRoomMemberRequest extends PutRequest<NoContent> {
 
     private final String roomIdOrName;
     private final String userIdOrEmail;
@@ -28,7 +29,7 @@ public class AddRoomMemberRequest extends DeleteRequest<NoContent> {
 
     @Override
     protected Map<String, Object> toQueryMap() {
-        return null;
+        return new HashMap<>();
     }
 
     @Override
