@@ -1,5 +1,6 @@
 package io.evanwong.oss.hipchat.v2.commons;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -27,7 +28,8 @@ public abstract class Request<T> {
     protected ExecutorService executorService;
     protected String accessToken;
     protected HttpClient httpClient;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper =
+      new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     protected final ObjectWriter objectWriter = objectMapper.writer();
     protected final ObjectReader objectReader;
 
