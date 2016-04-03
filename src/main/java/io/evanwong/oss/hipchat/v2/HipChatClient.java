@@ -17,35 +17,69 @@ public class HipChatClient {
 
     private static final Logger log = LoggerFactory.getLogger(HipChatClient.class);
 
-    private CloseableHttpClient httpClient;
-    private ExecutorService executorService;
+    private final CloseableHttpClient httpClient;
+    private final ExecutorService executorService;
     private String defaultAccessToken;
     //TODO move this out
-    private int maxConnections = 20;
+    private static final int MAX_CONNECTIONS = 20;
     //TODO move this out
-    private int maxConnectionsPerRoute = 4;
-
+    private static final int MAX_CONNECTIONS_PER_ROUTE = 4;
+    
 
     public HipChatClient() {
-        init();
+        this.httpClient = createDefaultHttpClient();
+        this.executorService = createDefaultExecutorService();
     }
 
     public HipChatClient(String defaultAccessToken) {
+        this();
         this.defaultAccessToken = defaultAccessToken;
-        init();
+    }
+    
+    public HipChatClient(CloseableHttpClient httpClient) {
+        this.httpClient = httpClient;
+        this.executorService = createDefaultExecutorService();
+    }
+    
+    public HipChatClient(ExecutorService executorService) {
+        this.httpClient = createDefaultHttpClient();
+        this.executorService = executorService;
+    }
+    
+    public HipChatClient(CloseableHttpClient httpClient, String defaultAccessToken) {
+        this(httpClient);
+        this.defaultAccessToken = defaultAccessToken;
+    }
+    
+    public HipChatClient(ExecutorService executorService, String defaultAccessToken) {
+        this(executorService);
+        this.defaultAccessToken = defaultAccessToken;
+    }    
+    
+    public HipChatClient(CloseableHttpClient httpClient, ExecutorService executorService) {
+        this.httpClient = httpClient;
+        this.executorService = executorService;
+    }
+    
+    public HipChatClient(CloseableHttpClient httpClient, ExecutorService executorService, String defaultAccessToken) {
+        this(httpClient, executorService);
+        this.defaultAccessToken = defaultAccessToken;
     }
 
-    private void init() {
+    private static CloseableHttpClient createDefaultHttpClient() {
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        cm.setMaxTotal(maxConnections);
-        log.debug("Max pool size: {}", maxConnections);
-        cm.setDefaultMaxPerRoute(maxConnectionsPerRoute);
-        log.debug("Max per route: {}", maxConnectionsPerRoute);
+        cm.setMaxTotal(MAX_CONNECTIONS);
+        log.debug("Max pool size: {}", MAX_CONNECTIONS);
+        cm.setDefaultMaxPerRoute(MAX_CONNECTIONS_PER_ROUTE);
+        log.debug("Max per route: {}", MAX_CONNECTIONS_PER_ROUTE);
 
-        httpClient = HttpClients.custom().setConnectionManager(cm).build();
-        //setting the thread pool size equal to the max connections size
-        executorService = Executors.newFixedThreadPool(maxConnections);
+        return HttpClients.custom().setConnectionManager(cm).build();
     }
+    
+    private static ExecutorService createDefaultExecutorService() {
+        //setting the thread pool size equal to the max connections size
+        return Executors.newFixedThreadPool(MAX_CONNECTIONS);
+    }    
 
     public void setDefaultAccessToken(String defaultAccessToken) {
         this.defaultAccessToken = defaultAccessToken;
