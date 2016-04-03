@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.4.0'
+compile 'io.evanwong.oss:hipchat-java:0.4.1'
 ```
 
 If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
@@ -73,6 +73,7 @@ NoContent noContent = future.get();
 - [x] Delete room
 - [ ] View room history
 - [ ] Get room message
+- [x] Send room message
 - [ ] View recent room history
 - [ ] Invite user
 - [x] Add member
