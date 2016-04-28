@@ -12,8 +12,8 @@ public class GetAllEmoticonsRequestBuilder extends ExpandableRequestBuilder<GetA
     private Integer maxResults;
     private EmoticonType type;
 
-    public GetAllEmoticonsRequestBuilder(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public GetAllEmoticonsRequestBuilder(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     public Integer getStartIndex() {
@@ -45,6 +45,6 @@ public class GetAllEmoticonsRequestBuilder extends ExpandableRequestBuilder<GetA
 
     @Override
     public GetAllEmoticonsRequest build() {
-        return new GetAllEmoticonsRequest(startIndex, maxResults, type, accessToken, httpClient, executorService);
+        return new GetAllEmoticonsRequest(startIndex, maxResults, type, accessToken, baseUrl, httpClient, executorService);
     }
 }

@@ -10,8 +10,8 @@ public class SendRoomMessageRequestBuilder extends RequestBuilder<SendRoomMessag
     private String idOrName;
     private String message;
 
-    public SendRoomMessageRequestBuilder(String idOrName, String message, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public SendRoomMessageRequestBuilder(String idOrName, String message, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrName = idOrName;
         this.message = message;
     }
@@ -23,6 +23,6 @@ public class SendRoomMessageRequestBuilder extends RequestBuilder<SendRoomMessag
         if (idOrName == null) {
             throw new IllegalArgumentException("idOrName is required.");
         }
-        return new SendRoomMessageRequest(idOrName, message, accessToken, httpClient, executorService);
+        return new SendRoomMessageRequest(idOrName, message, accessToken, baseUrl, httpClient, executorService);
     }
 }

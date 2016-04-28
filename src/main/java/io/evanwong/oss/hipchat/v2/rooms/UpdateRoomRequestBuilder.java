@@ -9,9 +9,9 @@ public class UpdateRoomRequestBuilder extends RequestBuilder<UpdateRoomRequest> 
 
     private UpdateRoomRequest updateRoomRequest;
 
-    public UpdateRoomRequestBuilder(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
-        this.updateRoomRequest = new UpdateRoomRequest(roomIdOrName, accessToken, httpClient, executorService);
+    public UpdateRoomRequestBuilder(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
+        this.updateRoomRequest = new UpdateRoomRequest(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
     public UpdateRoomRequestBuilder setName(String name) {

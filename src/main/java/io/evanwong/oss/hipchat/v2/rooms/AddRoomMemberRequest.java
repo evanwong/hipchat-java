@@ -13,8 +13,8 @@ public class AddRoomMemberRequest extends PutRequest<NoContent> {
     private final String roomIdOrName;
     private final String userIdOrEmail;
 
-    public AddRoomMemberRequest(String userIdOrEmail, String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public AddRoomMemberRequest(String userIdOrEmail, String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = roomIdOrName;
         this.userIdOrEmail = userIdOrEmail;
     }

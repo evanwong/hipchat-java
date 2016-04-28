@@ -11,8 +11,8 @@ public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder<GetAllRo
     private Integer maxResults;
     private Boolean includeArchived;
 
-    public GetAllRoomsRequestBuilder(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public GetAllRoomsRequestBuilder(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     public GetAllRoomsRequestBuilder setStartIndex(Integer startIndex) {
@@ -35,7 +35,7 @@ public class GetAllRoomsRequestBuilder extends ExpandableRequestBuilder<GetAllRo
         if (accessToken == null) {
             throw new IllegalArgumentException("accessToken is required");
         }
-        GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(startIndex, maxResults, includeArchived, accessToken, httpClient, executorService);
+        GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(startIndex, maxResults, includeArchived, accessToken, baseUrl, httpClient, executorService);
         if (!expansions.isEmpty()) {
             expansions.forEach(title -> getAllRoomsRequest.addExpansion(title));
         }

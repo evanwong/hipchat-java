@@ -17,8 +17,8 @@ public class CreateRoomRequest extends PostRequest<Created> {
     private String ownerUserId;
     private Privacy privacy;
 
-    CreateRoomRequest(String topic, Boolean guestAcccess, String name, String ownerUserId, Privacy privacy, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    CreateRoomRequest(String topic, Boolean guestAcccess, String name, String ownerUserId, Privacy privacy, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         if (name == null || name.length() == 0) {
             throw new IllegalArgumentException("name is required.");
         }

@@ -10,8 +10,8 @@ public class GetEmoticonRequest extends GetRequest<Emoticon> {
 
     private final String idOrShortcut;
 
-    GetEmoticonRequest(String idOrShortcut, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    GetEmoticonRequest(String idOrShortcut, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrShortcut = idOrShortcut;
     }
 

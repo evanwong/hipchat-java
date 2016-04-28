@@ -13,8 +13,8 @@ public class SetTopicRequest extends PutRequest<NoContent> {
     private String roomIdOrName;
     private String topic;
 
-    public SetTopicRequest(String idOrName, String topic, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public SetTopicRequest(String idOrName, String topic, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = idOrName;
         this.topic = topic;
     }

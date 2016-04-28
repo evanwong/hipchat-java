@@ -10,8 +10,8 @@ public class GetRoomRequest extends GetRequest<Room> {
 
     private String roomIdOrName;
 
-    GetRoomRequest(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    GetRoomRequest(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = roomIdOrName;
     }
 
