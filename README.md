@@ -93,11 +93,11 @@ NoContent noContent = future.get();
 - [ ] Delete webhook
 
 ##### USERS
-- [ ] Get all users
-- [ ] Create user
-- [ ] View user
+- [x] Get all users
+- [x] Create user
+- [x] View user
 - [ ] Update user
-- [ ] Delete user
+- [x] Delete user
 - [ ] Get privatechat message
 - [ ] View recent privatechat history
 - [ ] Private message user
