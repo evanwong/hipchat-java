@@ -24,7 +24,7 @@ public abstract class Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(Request.class);
 
-    protected static final String BASE_URL = "https://api.hipchat.com/v2";
+    protected static String BASE_URL = "https://api.hipchat.com/v2";
     protected ExecutorService executorService;
     protected String accessToken;
     protected HttpClient httpClient;
@@ -89,4 +89,12 @@ public abstract class Request<T> {
     protected Class<T> getParameterClass() {
         return (Class<T>) (((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
     }
+    
+    public static String getBaseUrl() {
+		return BASE_URL;
+	}
+
+	public static void setBaseUrl(String baseUrl) {
+		BASE_URL = baseUrl;
+	}
 }
