@@ -9,8 +9,8 @@ import java.util.concurrent.ExecutorService;
 public class DeleteUserRequest extends DeleteRequest<UserItem> {
     private final String idOrEmail;
 
-    public DeleteUserRequest(String idOrEmail, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public DeleteUserRequest(String idOrEmail, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrEmail = idOrEmail;
     }
 

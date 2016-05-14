@@ -18,8 +18,8 @@ public abstract class PutRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(PutRequest.class);
 
-    protected PutRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    protected PutRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     @Override
@@ -28,7 +28,7 @@ public abstract class PutRequest<T> extends Request<T> {
         String encodedPath = getEncodedPath();
         log.info("PUT - path: {}, params: {}", encodedPath, params);
 
-        HttpPut httpPut = new HttpPut(BASE_URL + encodedPath);
+        HttpPut httpPut = new HttpPut(super.baseUrl + encodedPath);
         httpPut.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPut.addHeader(new BasicHeader("Content-Type", "application/json"));
         httpPut.setEntity(new StringEntity(objectWriter.writeValueAsString(params), Consts.UTF_8));

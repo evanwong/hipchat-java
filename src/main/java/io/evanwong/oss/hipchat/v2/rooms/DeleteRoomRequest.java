@@ -11,8 +11,8 @@ public class DeleteRoomRequest extends DeleteRequest<NoContent> {
 
     private final String roomIdOrName;
 
-    public DeleteRoomRequest(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public DeleteRoomRequest(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = roomIdOrName;
     }
 

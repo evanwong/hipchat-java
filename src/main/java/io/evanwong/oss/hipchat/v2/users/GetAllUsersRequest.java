@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
 public class GetAllUsersRequest extends GetRequest<Users> {
-    protected GetAllUsersRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    protected GetAllUsersRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     @Override

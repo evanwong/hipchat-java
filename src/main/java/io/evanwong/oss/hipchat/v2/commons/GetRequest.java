@@ -20,8 +20,8 @@ public abstract class GetRequest<T> extends Request<T> {
     private static final Logger log = LoggerFactory.getLogger(GetRequest.class);
     protected List<String> expansions = new ArrayList<>();
 
-    protected GetRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    protected GetRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class GetRequest<T> extends Request<T> {
             }
         }
 
-        HttpGet httpGet = new HttpGet(BASE_URL + encodedPath + query);
+        HttpGet httpGet = new HttpGet(baseUrl + encodedPath + query);
         httpGet.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         return httpClient.execute(httpGet, HttpClientContext.create());
     }

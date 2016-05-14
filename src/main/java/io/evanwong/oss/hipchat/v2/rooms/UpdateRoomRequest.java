@@ -18,8 +18,8 @@ public class UpdateRoomRequest extends PutRequest<NoContent> {
     private String topic;
     private String ownerIdOrEmail;
 
-    public UpdateRoomRequest(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public UpdateRoomRequest(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = roomIdOrName;
     }
 

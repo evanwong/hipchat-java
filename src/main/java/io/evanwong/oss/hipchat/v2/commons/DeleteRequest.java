@@ -18,8 +18,8 @@ public abstract class DeleteRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(DeleteRequest.class);
 
-    protected DeleteRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    protected DeleteRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     @Override
@@ -28,7 +28,7 @@ public abstract class DeleteRequest<T> extends Request<T> {
         String encodedPath = getEncodedPath();
         log.info("POST - path: {}, params: {}", encodedPath, params);
 
-        HttpDelete httpDelete = new HttpDelete(BASE_URL + encodedPath);
+        HttpDelete httpDelete = new HttpDelete(baseUrl + encodedPath);
         httpDelete.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpDelete.addHeader(new BasicHeader("Content-Type", "application/json"));
         return httpClient.execute(httpDelete, HttpClientContext.create());

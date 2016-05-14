@@ -9,8 +9,8 @@ import java.util.concurrent.ExecutorService;
 public class ViewUserRequest extends GetRequest<UserItem> {
     private final String idOrEmail;
 
-    public ViewUserRequest(String idOrEmail, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public ViewUserRequest(String idOrEmail, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrEmail = idOrEmail;
     }
 

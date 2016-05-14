@@ -13,8 +13,8 @@ public class CreateRoomRequestBuilder extends RequestBuilder<CreateRoomRequest> 
     private String ownerUserId;
     private Privacy privacy;
 
-    public CreateRoomRequestBuilder(String name, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public CreateRoomRequestBuilder(String name, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.name = name;
     }
 
@@ -43,6 +43,6 @@ public class CreateRoomRequestBuilder extends RequestBuilder<CreateRoomRequest> 
         if (name == null) {
             throw new IllegalArgumentException("name is required.");
         }
-        return new CreateRoomRequest(topic, guestAcccess, name, ownerUserId, privacy, accessToken, httpClient, executorService);
+        return new CreateRoomRequest(topic, guestAcccess, name, ownerUserId, privacy, accessToken, baseUrl, httpClient, executorService);
     }
 }

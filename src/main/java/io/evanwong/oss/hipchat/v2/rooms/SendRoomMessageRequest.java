@@ -13,8 +13,8 @@ public class SendRoomMessageRequest extends PostRequest<NoContent> {
     private String idOrName;
     private String message;
 
-    SendRoomMessageRequest(String idOrName, String message, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    SendRoomMessageRequest(String idOrName, String message, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrName = idOrName;
         this.message = message;
     }

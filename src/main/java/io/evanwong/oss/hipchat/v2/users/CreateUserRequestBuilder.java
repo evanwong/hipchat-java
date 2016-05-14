@@ -10,8 +10,8 @@ public class CreateUserRequestBuilder extends RequestBuilder<CreateUserRequest> 
     private String password;
     private String emailaddress;
 
-    public CreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public CreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;
@@ -37,6 +37,6 @@ public class CreateUserRequestBuilder extends RequestBuilder<CreateUserRequest> 
         if (username == null) throw new IllegalArgumentException("username is required");
         if (emailaddress == null) throw new IllegalArgumentException("emailaddress is required");
 
-        return new CreateUserRequest(username, password, emailaddress, accessToken, httpClient, executorService);
+        return new CreateUserRequest(username, password, emailaddress, accessToken, baseUrl, httpClient, executorService);
     }
 }

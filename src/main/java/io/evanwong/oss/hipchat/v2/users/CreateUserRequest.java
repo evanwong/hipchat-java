@@ -12,8 +12,8 @@ public class CreateUserRequest extends PostRequest<UserItem> {
     private final String password;
     private final String emailaddress;
 
-    public CreateUserRequest(String username, String password, String emailaddress, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public CreateUserRequest(String username, String password, String emailaddress, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.username = username;
         this.password = password;
         this.emailaddress = emailaddress;

@@ -16,8 +16,8 @@ public class SendRoomNotificationRequest extends PostRequest<NoContent> {
     private Boolean notify;
     private MessageFormat messageFormat;
 
-    SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, MessageFormat messageFormat, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    SendRoomNotificationRequest(String idOrName, MessageColor color, String message, Boolean notify, MessageFormat messageFormat, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrName = idOrName;
         this.color = color;
         this.message = message;

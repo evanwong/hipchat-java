@@ -9,8 +9,8 @@ public class GetEmoticonRequestBuilder extends RequestBuilder<GetEmoticonRequest
 
     private final String idOrShortcut;
 
-    public GetEmoticonRequestBuilder(String idOrShortcut, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public GetEmoticonRequestBuilder(String idOrShortcut, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrShortcut = idOrShortcut;
     }
 
@@ -20,6 +20,6 @@ public class GetEmoticonRequestBuilder extends RequestBuilder<GetEmoticonRequest
 
     @Override
     public GetEmoticonRequest build() {
-        return new GetEmoticonRequest(idOrShortcut, accessToken, httpClient, executorService);
+        return new GetEmoticonRequest(idOrShortcut, accessToken, baseUrl, httpClient, executorService);
     }
 }
