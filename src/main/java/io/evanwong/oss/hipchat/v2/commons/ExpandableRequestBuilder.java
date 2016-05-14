@@ -10,8 +10,8 @@ public abstract class ExpandableRequestBuilder<T, E> extends RequestBuilder<E> {
 
     protected final List<String> expansions;
 
-    public ExpandableRequestBuilder(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public ExpandableRequestBuilder(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         expansions = new ArrayList<>();
     }
 

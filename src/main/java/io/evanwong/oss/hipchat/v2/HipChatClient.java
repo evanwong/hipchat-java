@@ -3,6 +3,10 @@ package io.evanwong.oss.hipchat.v2;
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.*;
+import io.evanwong.oss.hipchat.v2.users.CreateUserRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.DeleteUserRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.GetAllUsersRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.ViewUserRequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -20,6 +24,7 @@ public class HipChatClient {
     private final CloseableHttpClient httpClient;
     private final ExecutorService executorService;
     private String defaultAccessToken;
+    private String baseUrl = "https://api.hipchat.com/v2";
     //TODO move this out
     private static final int MAX_CONNECTIONS = 20;
     //TODO move this out
@@ -34,6 +39,12 @@ public class HipChatClient {
     public HipChatClient(String defaultAccessToken) {
         this();
         this.defaultAccessToken = defaultAccessToken;
+    }
+
+    public HipChatClient(String defaultAccessToken, String baseUrl) {
+        this();
+        this.defaultAccessToken = defaultAccessToken;
+        this.baseUrl = baseUrl;
     }
     
     public HipChatClient(CloseableHttpClient httpClient) {
@@ -86,7 +97,7 @@ public class HipChatClient {
     }
 
     public GetAllRoomsRequestBuilder prepareGetAllRoomsRequestBuilder(String accessToken) {
-        return new GetAllRoomsRequestBuilder(accessToken, httpClient, executorService);
+        return new GetAllRoomsRequestBuilder(accessToken, baseUrl, httpClient, executorService);
     }
 
     public GetAllRoomsRequestBuilder prepareGetAllRoomsRequestBuilder() {
@@ -94,7 +105,7 @@ public class HipChatClient {
     }
 
     public SendRoomMessageRequestBuilder prepareSendRoomMessageRequestBuilder(String idOrName, String message, String accessToken) {
-        return new SendRoomMessageRequestBuilder(idOrName, message, accessToken, httpClient, executorService);
+        return new SendRoomMessageRequestBuilder(idOrName, message, accessToken, baseUrl, httpClient, executorService);
     }
 
     public SendRoomMessageRequestBuilder prepareSendRoomMessageRequestBuilder(String idOrName, String message) {
@@ -102,7 +113,7 @@ public class HipChatClient {
     }
 
     public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken) {
-        return new SendRoomNotificationRequestBuilder(idOrName, message, accessToken, httpClient, executorService);
+        return new SendRoomNotificationRequestBuilder(idOrName, message, accessToken, baseUrl, httpClient, executorService);
     }
 
     public SendRoomNotificationRequestBuilder prepareSendRoomNotificationRequestBuilder(String idOrName, String message) {
@@ -110,7 +121,7 @@ public class HipChatClient {
     }
 
     public CreateRoomRequestBuilder prepareCreateRoomRequestBuilder(String name, String accessToken) {
-        return new CreateRoomRequestBuilder(name, accessToken, httpClient, executorService);
+        return new CreateRoomRequestBuilder(name, accessToken, baseUrl, httpClient, executorService);
     }
 
     public CreateRoomRequestBuilder prepareCreateRoomRequestBuilder(String name) {
@@ -118,7 +129,7 @@ public class HipChatClient {
     }
 
     public GetRoomRequestBuilder prepareGetRoomRequestBuilder(String idOrName, String accessToken) {
-        return new GetRoomRequestBuilder(idOrName, accessToken, httpClient, executorService);
+        return new GetRoomRequestBuilder(idOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
     public GetRoomRequestBuilder prepareGetRoomRequestBuilder(String idOrName) {
@@ -126,11 +137,11 @@ public class HipChatClient {
     }
 
     public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut) {
-        return prepareGetEmoticonRequestBuilder(idOrShortcut);
+        return prepareGetEmoticonRequestBuilder(idOrShortcut, defaultAccessToken);
     }
 
     public GetEmoticonRequestBuilder prepareGetEmoticonRequestBuilder(String idOrShortcut, String accessToken) {
-        return new GetEmoticonRequestBuilder(idOrShortcut, accessToken, httpClient, executorService);
+        return new GetEmoticonRequestBuilder(idOrShortcut, accessToken, baseUrl, httpClient, executorService);
     }
 
     public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder() {
@@ -138,7 +149,7 @@ public class HipChatClient {
     }
 
     public GetAllEmoticonsRequestBuilder prepareGetAllEmoticonsRequestBuilder(String accessToken) {
-        return new GetAllEmoticonsRequestBuilder(accessToken, httpClient, executorService);
+        return new GetAllEmoticonsRequestBuilder(accessToken, baseUrl, httpClient, executorService);
     }
 
     public DeleteRoomRequestBuilder prepareDeleteRoomRequestBuilder(String roomIdOrName) {
@@ -146,7 +157,7 @@ public class HipChatClient {
     }
 
     public DeleteRoomRequestBuilder prepareDeleteRoomRequestBuilder(String roomIdOrName, String accessToken) {
-        return new DeleteRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
+        return new DeleteRoomRequestBuilder(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
     public RemoveRoomMemberRequestBuilder prepareRemoveRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName) {
@@ -154,7 +165,7 @@ public class HipChatClient {
     }
 
     public RemoveRoomMemberRequestBuilder prepareRemoveRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName, String accessToken) {
-        return new RemoveRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, httpClient, executorService);
+        return new RemoveRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
     public AddRoomMemberRequestBuilder prepareAddRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName) {
@@ -162,7 +173,7 @@ public class HipChatClient {
     }
 
     public AddRoomMemberRequestBuilder prepareAddRoomMemberRequestBuilder(String userIdOrEmail, String roomIdOrName, String accessToken) {
-        return new AddRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, httpClient, executorService);
+        return new AddRoomMemberRequestBuilder(userIdOrEmail, roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
     public SetTopicRequestBuilder prepareSetTopicRequestBuilder(String roomIdOrName, String topic) {
@@ -170,7 +181,7 @@ public class HipChatClient {
     }
 
     public SetTopicRequestBuilder prepareSetTopicRequestBuilder(String roomIdOrName, String topic, String accessToken) {
-        return new SetTopicRequestBuilder(roomIdOrName, topic, accessToken, httpClient, executorService);
+        return new SetTopicRequestBuilder(roomIdOrName, topic, accessToken, baseUrl, httpClient, executorService);
     }
 
     public UpdateRoomRequestBuilder prepareUpdateRoomRequestBuilder(String roomIdOrName) {
@@ -178,7 +189,41 @@ public class HipChatClient {
     }
 
     public UpdateRoomRequestBuilder prepareUpdateRoomRequestBuilder(String roomIdOrName, String accessToken) {
-        return new UpdateRoomRequestBuilder(roomIdOrName, accessToken, httpClient, executorService);
+        return new UpdateRoomRequestBuilder(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
+    }
+
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken)
+    {
+        return new CreateUserRequestBuilder(username, password, emailaddress, accessToken, baseUrl, httpClient, executorService);
+    }
+
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress)
+    {
+        return prepareCreateUserRequestBuilder(username, password, emailaddress, defaultAccessToken);
+    }
+
+    public GetAllUsersRequestBuilder prepareGetAllUsersRequestBuilder(String accessToken) {
+        return new GetAllUsersRequestBuilder(accessToken, baseUrl, httpClient, executorService);
+    }
+
+    public GetAllUsersRequestBuilder prepareGetAllUsersRequestBuilder() {
+        return prepareGetAllUsersRequestBuilder(defaultAccessToken);
+    }
+
+    private ViewUserRequestBuilder prepareViewUserRequestBuilder(String idOrEmail, String accessToken) {
+        return new ViewUserRequestBuilder(idOrEmail, accessToken, baseUrl, httpClient, executorService);
+    }
+
+    public ViewUserRequestBuilder prepareViewUserRequestBuilder(String idOrEmail) {
+        return prepareViewUserRequestBuilder(idOrEmail, defaultAccessToken);
+    }
+
+    private DeleteUserRequestBuilder prepareDeleteUserRequestBuilder(String idOrEmail, String accessToken) {
+        return new DeleteUserRequestBuilder(idOrEmail, accessToken, baseUrl, httpClient, executorService);
+    }
+
+    public DeleteUserRequestBuilder prepareDeleteUserRequestBuilder(String idOrEmail) {
+        return prepareDeleteUserRequestBuilder(idOrEmail, defaultAccessToken);
     }
 
     public void close() {

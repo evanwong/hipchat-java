@@ -10,8 +10,8 @@ public class SetTopicRequestBuilder extends RequestBuilder<SetTopicRequest> {
     private String roomIdOrName;
     private String topic;
 
-    public SetTopicRequestBuilder(String idOrName, String topic, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public SetTopicRequestBuilder(String idOrName, String topic, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = idOrName;
         this.topic = topic;
     }
@@ -24,6 +24,6 @@ public class SetTopicRequestBuilder extends RequestBuilder<SetTopicRequest> {
         if (roomIdOrName == null) {
             throw new IllegalArgumentException("idOrName is required.");
         }
-        return new SetTopicRequest(roomIdOrName, topic, accessToken, httpClient, executorService);
+        return new SetTopicRequest(roomIdOrName, topic, accessToken, baseUrl, httpClient, executorService);
     }
 }

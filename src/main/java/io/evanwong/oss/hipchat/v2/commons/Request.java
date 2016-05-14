@@ -24,7 +24,8 @@ public abstract class Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(Request.class);
 
-    protected static final String BASE_URL = "https://api.hipchat.com/v2";
+//    protected static final String BASE_URL = "https://api.hipchat.com/v2";
+    protected String baseUrl = "https://api.hipchat.com/v2";
     protected ExecutorService executorService;
     protected String accessToken;
     protected HttpClient httpClient;
@@ -57,10 +58,11 @@ public abstract class Request<T> {
         return encodedPath;
     }
 
-    protected Request(String accessToken, HttpClient httpClient, ExecutorService executorService) {
+    protected Request(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
         this.executorService = executorService;
         this.accessToken = accessToken;
         this.httpClient = httpClient;
+        this.baseUrl = baseUrl;
         this.objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
         this.objectReader = objectMapper.reader(getParameterClass());
     }

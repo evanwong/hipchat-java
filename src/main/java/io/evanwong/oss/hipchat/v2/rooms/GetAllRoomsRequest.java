@@ -13,8 +13,8 @@ public class GetAllRoomsRequest extends GetRequest<Rooms> {
     private Integer maxResults;
     private Boolean includeArchived;
 
-    GetAllRoomsRequest(Integer startIndex, Integer maxResults, Boolean includeArchived, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    GetAllRoomsRequest(Integer startIndex, Integer maxResults, Boolean includeArchived, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.startIndex = startIndex;
         this.maxResults = maxResults;
         this.includeArchived = includeArchived;

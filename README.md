@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.4.1'
+compile 'io.evanwong.oss:hipchat-java:0.4.2'
 ```
 
 If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
@@ -93,11 +93,11 @@ NoContent noContent = future.get();
 - [ ] Delete webhook
 
 ##### USERS
-- [ ] Get all users
-- [ ] Create user
-- [ ] View user
+- [x] Get all users
+- [x] Create user
+- [x] View user
 - [ ] Update user
-- [ ] Delete user
+- [x] Delete user
 - [ ] Get privatechat message
 - [ ] View recent privatechat history
 - [ ] Private message user

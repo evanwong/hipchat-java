@@ -9,8 +9,8 @@ public class GetRoomRequestBuilder extends RequestBuilder<GetRoomRequest> {
 
     private String roomIdOrName;
 
-    public GetRoomRequestBuilder(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public GetRoomRequestBuilder(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         if (roomIdOrName == null || roomIdOrName.isEmpty()) {
             throw new IllegalArgumentException("roomIdOrName is required.");
         }
@@ -22,7 +22,7 @@ public class GetRoomRequestBuilder extends RequestBuilder<GetRoomRequest> {
     }
 
     public GetRoomRequest build() {
-        return new GetRoomRequest(roomIdOrName, accessToken, httpClient, executorService);
+        return new GetRoomRequest(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
 }

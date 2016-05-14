@@ -13,8 +13,8 @@ public class GetAllEmoticonsRequest extends GetRequest<Emoticons> {
     private final Integer maxResults;
     private final EmoticonType type;
 
-    GetAllEmoticonsRequest(Integer startIndex, Integer maxResults, EmoticonType type, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    GetAllEmoticonsRequest(Integer startIndex, Integer maxResults, EmoticonType type, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.startIndex = startIndex;
         this.maxResults = maxResults;
         this.type = type;

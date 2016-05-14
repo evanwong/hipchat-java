@@ -13,8 +13,8 @@ public class SendRoomNotificationRequestBuilder extends RequestBuilder<SendRoomN
     private Boolean notify;
     private MessageFormat messageFormat;
 
-    public SendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public SendRoomNotificationRequestBuilder(String idOrName, String message, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.idOrName = idOrName;
         this.message = message;
     }
@@ -41,6 +41,6 @@ public class SendRoomNotificationRequestBuilder extends RequestBuilder<SendRoomN
         if (idOrName == null) {
             throw new IllegalArgumentException("idOrName is required.");
         }
-        return new SendRoomNotificationRequest(idOrName, color, message, notify, messageFormat, accessToken, httpClient, executorService);
+        return new SendRoomNotificationRequest(idOrName, color, message, notify, messageFormat, accessToken, baseUrl, httpClient, executorService);
     }
 }

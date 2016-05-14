@@ -18,8 +18,8 @@ public abstract class PostRequest<T> extends Request<T> {
 
     private static final Logger log = LoggerFactory.getLogger(PostRequest.class);
 
-    protected PostRequest(String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    protected PostRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
     }
 
     @Override
@@ -28,7 +28,7 @@ public abstract class PostRequest<T> extends Request<T> {
         String encodedPath = getEncodedPath();
         log.info("POST - path: {}, params: {}", encodedPath, params);
 
-        HttpPost httpPost = new HttpPost(BASE_URL + encodedPath);
+        HttpPost httpPost = new HttpPost(baseUrl + encodedPath);
         httpPost.addHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
         httpPost.addHeader(new BasicHeader("Content-Type", "application/json"));
         httpPost.setEntity(new StringEntity(objectWriter.writeValueAsString(params), Consts.UTF_8));

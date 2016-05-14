@@ -9,13 +9,13 @@ public class DeleteRoomRequestBuilder extends RequestBuilder<DeleteRoomRequest> 
 
     private final String roomIdOrName;
 
-    public DeleteRoomRequestBuilder(String roomIdOrName, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(accessToken, httpClient, executorService);
+    public DeleteRoomRequestBuilder(String roomIdOrName, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+        super(accessToken, baseUrl, httpClient, executorService);
         this.roomIdOrName = roomIdOrName;
     }
 
     @Override
     public DeleteRoomRequest build() {
-        return new DeleteRoomRequest(roomIdOrName, accessToken, httpClient, executorService);
+        return new DeleteRoomRequest(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 }
