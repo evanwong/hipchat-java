@@ -50,5 +50,5 @@ if (hasProperty('ossrhUsername') && hasProperty('ossrhPassword')) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '3.1'
 }
