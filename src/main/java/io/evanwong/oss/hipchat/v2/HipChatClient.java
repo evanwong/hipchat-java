@@ -3,10 +3,7 @@ package io.evanwong.oss.hipchat.v2;
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.*;
-import io.evanwong.oss.hipchat.v2.users.CreateUserRequestBuilder;
-import io.evanwong.oss.hipchat.v2.users.DeleteUserRequestBuilder;
-import io.evanwong.oss.hipchat.v2.users.GetAllUsersRequestBuilder;
-import io.evanwong.oss.hipchat.v2.users.ViewUserRequestBuilder;
+import io.evanwong.oss.hipchat.v2.users.*;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -29,7 +26,7 @@ public class HipChatClient {
     private static final int MAX_CONNECTIONS = 20;
     //TODO move this out
     private static final int MAX_CONNECTIONS_PER_ROUTE = 4;
-    
+
 
     public HipChatClient() {
         this.httpClient = createDefaultHttpClient();
@@ -46,32 +43,32 @@ public class HipChatClient {
         this.defaultAccessToken = defaultAccessToken;
         this.baseUrl = baseUrl;
     }
-    
+
     public HipChatClient(CloseableHttpClient httpClient) {
         this.httpClient = httpClient;
         this.executorService = createDefaultExecutorService();
     }
-    
+
     public HipChatClient(ExecutorService executorService) {
         this.httpClient = createDefaultHttpClient();
         this.executorService = executorService;
     }
-    
+
     public HipChatClient(CloseableHttpClient httpClient, String defaultAccessToken) {
         this(httpClient);
         this.defaultAccessToken = defaultAccessToken;
     }
-    
+
     public HipChatClient(ExecutorService executorService, String defaultAccessToken) {
         this(executorService);
         this.defaultAccessToken = defaultAccessToken;
-    }    
-    
+    }
+
     public HipChatClient(CloseableHttpClient httpClient, ExecutorService executorService) {
         this.httpClient = httpClient;
         this.executorService = executorService;
     }
-    
+
     public HipChatClient(CloseableHttpClient httpClient, ExecutorService executorService, String defaultAccessToken) {
         this(httpClient, executorService);
         this.defaultAccessToken = defaultAccessToken;
@@ -86,11 +83,11 @@ public class HipChatClient {
 
         return HttpClients.custom().setConnectionManager(cm).build();
     }
-    
+
     private static ExecutorService createDefaultExecutorService() {
         //setting the thread pool size equal to the max connections size
         return Executors.newFixedThreadPool(MAX_CONNECTIONS);
-    }    
+    }
 
     public void setDefaultAccessToken(String defaultAccessToken) {
         this.defaultAccessToken = defaultAccessToken;
@@ -192,13 +189,11 @@ public class HipChatClient {
         return new UpdateRoomRequestBuilder(roomIdOrName, accessToken, baseUrl, httpClient, executorService);
     }
 
-    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken)
-    {
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress, String accessToken) {
         return new CreateUserRequestBuilder(username, password, emailaddress, accessToken, baseUrl, httpClient, executorService);
     }
 
-    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress)
-    {
+    public CreateUserRequestBuilder prepareCreateUserRequestBuilder(String username, String password, String emailaddress) {
         return prepareCreateUserRequestBuilder(username, password, emailaddress, defaultAccessToken);
     }
 
@@ -224,6 +219,14 @@ public class HipChatClient {
 
     public DeleteUserRequestBuilder prepareDeleteUserRequestBuilder(String idOrEmail) {
         return prepareDeleteUserRequestBuilder(idOrEmail, defaultAccessToken);
+    }
+
+    public PrivateMessageUserRequestBuilder preparePrivateMessageUserRequestBuilder(String idOrEmail, String message) {
+        return preparePrivateMessageUserRequestBuilder(idOrEmail, message, defaultAccessToken);
+    }
+
+    public PrivateMessageUserRequestBuilder preparePrivateMessageUserRequestBuilder(String idOrEmail, String message, String accessToken) {
+        return new PrivateMessageUserRequestBuilder(idOrEmail, message, accessToken, baseUrl, httpClient, executorService);
     }
 
     public void close() {
