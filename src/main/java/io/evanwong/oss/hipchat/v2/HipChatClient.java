@@ -2,6 +2,7 @@ package io.evanwong.oss.hipchat.v2;
 
 import io.evanwong.oss.hipchat.v2.emoticons.GetAllEmoticonsRequestBuilder;
 import io.evanwong.oss.hipchat.v2.emoticons.GetEmoticonRequestBuilder;
+import io.evanwong.oss.hipchat.v2.oauth.GetSessionRequestBuilder;
 import io.evanwong.oss.hipchat.v2.rooms.*;
 import io.evanwong.oss.hipchat.v2.users.*;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -239,4 +240,11 @@ public class HipChatClient {
         executorService.shutdown();
     }
 
+    public GetSessionRequestBuilder prepareGetSessionRequestBuilder() {
+        return new GetSessionRequestBuilder(defaultAccessToken, baseUrl, httpClient, executorService);
+    }
+
+    public GetSessionRequestBuilder prepareGetSessionRequestBuilder(String accessToken) {
+        return new GetSessionRequestBuilder(accessToken, baseUrl, httpClient, executorService);
+    }
 }

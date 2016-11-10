@@ -5,7 +5,6 @@ import io.evanwong.oss.hipchat.v2.rooms.MessageColor
 import io.evanwong.oss.hipchat.v2.rooms.MessageFormat
 import io.evanwong.oss.hipchat.v2.rooms.Privacy
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class HipChatClientSpec extends Specification {
     def token = "fasdfasdfasdfas123123"
@@ -287,10 +286,21 @@ class HipChatClientSpec extends Specification {
         req.getPath() == "/user/$idOrEmail/message" as String
 
         where:
-        idOrEmail       | message        |  notify | messageFormat
-        "user@mail.com" | "test message" |  true   | MessageFormat.TEXT
-        "42343"         | "new message"  |  false  | MessageFormat.HTML
+        idOrEmail       | message        | notify | messageFormat
+        "user@mail.com" | "test message" | true   | MessageFormat.TEXT
+        "42343"         | "new message"  | false  | MessageFormat.HTML
 
     }
 
+    def "prepareGetSessionBuilder should create a GetSessionRequest properly"() {
+        setup:
+        def builder = client.prepareGetSessionRequestBuilder()
+
+        when:
+        def req = builder.build()
+
+        then:
+        !req.toQueryMap()
+        req.getPath() == "/oauth/token/$token"
+    }
 }
