@@ -1,7 +1,6 @@
 package io.evanwong.oss.hipchat.v2.oauth;
 
 import io.evanwong.oss.hipchat.v2.commons.GetRequest;
-import io.evanwong.oss.hipchat.v2.rooms.Session;
 import org.apache.http.client.HttpClient;
 
 import java.util.Collections;

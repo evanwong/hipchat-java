@@ -1,6 +1,6 @@
-package io.evanwong.oss.hipchat.v2.rooms;
+package io.evanwong.oss.hipchat.v2.oauth;
 
-import com.fasterxml.jackson.annotation.JsonSetter;
+import io.evanwong.oss.hipchat.v2.rooms.Owner;
 
 import java.util.List;
 
