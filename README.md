@@ -100,7 +100,7 @@ NoContent noContent = future.get();
 - [x] Delete user
 - [ ] Get privatechat message
 - [ ] View recent privatechat history
-- [ ] Private message user
+- [x] Private message user
 - [ ] Update photo
 - [ ] Delete photo
 - [ ] Get auto join rooms
