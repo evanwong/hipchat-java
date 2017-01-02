@@ -262,8 +262,45 @@ class HipChatClientSpec extends Specification {
         req.getPath() equals("/user")
 
         where:
-        name        | pass      | email
-        "@testuser" | null      | "user@domain.nl"
-        "user"      | "user"    | "user@domain.nl"
+        name        | pass   | email
+        "@testuser" | null   | "user@domain.nl"
+        "user"      | "user" | "user@domain.nl"
+    }
+
+    def "privateMessageUserRequestBuilder should create a PrivateMessageUserRequest properly"() {
+        setup:
+        def builder = client.preparePrivateMessageUserRequestBuilder(idOrEmail, message)
+        builder.notify = notify
+        builder.messageFormat = messageFormat
+
+        when:
+        def req = builder.build()
+
+        then:
+        req.idOrEmail == idOrEmail
+        req.message == message
+        req.notify == notify
+        req.messageFormat == messageFormat
+
+        req.toQueryMap().size() == 3
+        req.getPath() == "/user/$idOrEmail/message" as String
+
+        where:
+        idOrEmail       | message        | notify | messageFormat
+        "user@mail.com" | "test message" | true   | MessageFormat.TEXT
+        "42343"         | "new message"  | false  | MessageFormat.HTML
+
+    }
+
+    def "prepareGetSessionBuilder should create a GetSessionRequest properly"() {
+        setup:
+        def builder = client.prepareGetSessionRequestBuilder()
+
+        when:
+        def req = builder.build()
+
+        then:
+        !req.toQueryMap()
+        req.getPath() == "/oauth/token/$token"
     }
 }
