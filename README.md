@@ -16,12 +16,12 @@ To add this client into your project:
 <dependency>
     <groupId>io.evanwong.oss</groupId>
     <artifactId>hipchat-java</artifactId>
-    <version>0.4.2</version>
+    <version>0.4.3</version>
 </dependency>
 ```
 * gradle
 ```gradle
-compile 'io.evanwong.oss:hipchat-java:0.4.2'
+compile 'io.evanwong.oss:hipchat-java:0.4.3'
 ```
 
 If you are using Java 7, there is a temporary workaround using [retrolambda](https://github.com/orfjackal/retrolambda).
@@ -100,7 +100,7 @@ NoContent noContent = future.get();
 - [x] Delete user
 - [ ] Get privatechat message
 - [ ] View recent privatechat history
-- [ ] Private message user
+- [x] Private message user
 - [ ] Update photo
 - [ ] Delete photo
 - [ ] Get auto join rooms
